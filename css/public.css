@@ -3,6 +3,9 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    padding: 0;
+    margin: 0;
+    color: #fff;
 }
 
 img {
@@ -16,13 +19,63 @@ img {
 .wrap {
     width: 450px;
     margin: 0 auto;
-    background-color: #050f1b;
-    width: 100%;
-    max-width: 450px;
+    background-color: #07192d;
+    max-width: 100%;
+    position: relative;
 }
 
 .ab {
     position: absolute;
     white-space: nowrap;
     color: #fff;
+}
+
+/* flex */
+.d-flex {
+    display: flex;
+}
+.r-center {
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* slider */
+.slick-slider {
+    height: 100%;
+}
+
+.slick-dotted.slick-slider {
+    overflow: visible;
+}
+
+.slick-prev {
+    left: 20px;
+    z-index: 10;
+}
+
+.slick-next {
+    right: 20px;
+    z-index: 10;
+}
+
+.slick-dots {
+    z-index: 9;
+    bottom: -10px;
+    background-color: #06101c;
+    height: 7vh;
+}
+
+.slick-dots li button:before {
+    color: #fff;
+    font-size: 12px;
+    opacity: 1;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #009bd4;
+    opacity: 1;
+}
+
+.slider-for .slick-prev, .slider-for .slick-next {
+    top: 98%;
 }
