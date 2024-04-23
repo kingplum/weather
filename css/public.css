@@ -1,0 +1,28 @@
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+img {
+    max-width: 100%;
+}
+
+.bg {
+    background-color: #050f1b;
+}
+
+.wrap {
+    width: 450px;
+    margin: 0 auto;
+    background-color: #050f1b;
+    width: 100%;
+    max-width: 450px;
+}
+
+.ab {
+    position: absolute;
+    white-space: nowrap;
+    color: #fff;
+}
