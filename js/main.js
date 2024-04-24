@@ -66,6 +66,9 @@ jQuery(document).ready(function(){
       if(num > 80) num = num - 20;
       $(this).find('.wind i').css('bottom', num + '%');
     });
+    $(window).load(function(){
+      $('.overlay').hide();
+    });
 });
 
 function rand_num(num) {
