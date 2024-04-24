@@ -24,10 +24,11 @@ img {
     position: relative;
 }
 
-.ab {
-    position: absolute;
-    white-space: nowrap;
-    color: #fff;
+/* chart */
+.chart {
+    background-color: #01cffe;
+    height: 100%;
+    display: block;
 }
 
 /* flex */
@@ -60,9 +61,9 @@ img {
 
 .slick-dots {
     z-index: 9;
-    bottom: -10px;
+    bottom: 0;
     background-color: #06101c;
-    height: 7vh;
+    height: 6vh;
 }
 
 .slick-dots li button:before {
