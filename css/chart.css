@@ -3,6 +3,11 @@
     width: 5vw;
 }
 
+.gap1 div div * {
+    display: inline-block;
+    font-weight: bold;
+}
+
 /* chart css */
 .sec3 {
     height: 47vh;
@@ -57,7 +62,7 @@
     bottom: 0;
     left: 0;
     z-index: 2;
-    width: 635px !important;
+    width: 612px !important;
     margin: 0 !important;
     background-color: transparent !important;
 }

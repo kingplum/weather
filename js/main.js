@@ -47,7 +47,10 @@ jQuery(document).ready(function(){
     $('.chart').each(function(){
       $(this).css('height', rand_num(100) + '%');
     });
-    $('.temp').each(function(){
+    $('.time').each(function(){
+      $(this).text(rand_fl(0.0, 2.9));
+    });
+    $('.temp, .gap1 div span').each(function(){
       $(this).text(rand_num(20));
     });
     $('.wicon').each(function(){
@@ -64,8 +67,8 @@ function rand_num(num) {
 }
 
 function rand_fl(min, max) {
-  let x = Math.floor((Math.random() * (min )) + 1);
-  return x;
+  let x = Math.floor(Math.random() * (max - min) + min);
+  return x.toFixed(1);
 }
 
 function rand_icon() {
