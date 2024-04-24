@@ -1,7 +1,7 @@
 /* header */
 header .wrap {
-    height: 10vh;
     background-color: #06101c;
+    padding: 20px 0;
 }
 
 header .wrap .slick-slide {
@@ -45,8 +45,64 @@ main .wrap {
 }
 
 .sec2 {
-    height: 12vh;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background: #273649;
 }
+.sec2 .item {
+    flex-basis: 50%;
+    box-sizing: border-box;
+}
+.sec2 .item h4 {
+    font-size: 150%;
+    margin: 0;
+}
+.direction {
+    font-size: 17px;
+}
+.slick-next {
+    right: 0px;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    background: url(../images/next.png) no-repeat;
+    filter: brightness(0) invert(1);
+    background-size: cover;
+}
+.slick-prev {
+    left: 0px;
+    z-index: 10;
+    height: 40px;
+    width: 40px;
+    background: url(../images/left.png) no-repeat;
+    filter: brightness(0) invert(1);
+    background-size: cover;
+}
+.slick-next:before,
+.slick-prev:before {
+    content: unset !important;
+}
+
+.icon-time img {
+    width: 20px;
+    height: 20px;
+}
+.icon-time {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.wrap-weather h2 {
+    margin-bottom: 10px;
+}
+.gap2 span,
+.gap4 span {
+    color: #767D87;
+}
+
+  
 
 /* footer */
 footer .wrap {
