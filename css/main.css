@@ -55,12 +55,28 @@ main .wrap {
     box-sizing: border-box;
 }
 .sec2 .item h4 {
-    font-size: 150%;
+    font-size: 30px;
     margin: 0;
+}
+.sec2 .item p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    gap: 5px;
+}
+.sec2 .item p:nth-of-type(2) {
+    margin: 10px 0;
+}
+.img-direction {
+    width: 20px;
+    margin-left: 20px;
 }
 .direction {
     font-size: 17px;
 }
+
 .slick-next {
     right: 0px;
     z-index: 10;
@@ -94,8 +110,11 @@ main .wrap {
     align-items: center;
     justify-content: center;
 }
-.wrap-weather h2 {
-    margin-bottom: 10px;
+header .wrap .wrap-weather h2{
+    margin-bottom: 15px;
+}
+header .wrap .wrap-weather h2 span {
+    margin: 0 5px;
 }
 .gap2 span,
 .gap4 span {
@@ -106,6 +125,21 @@ main .wrap {
 
 /* footer */
 footer .wrap {
-    height: 6vh;
-    background-color: #07192d;
+    background-color: #07192D;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    font-size: 13px;
+    gap: 10px;
+}
+
+.f-col img {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+.f-col:nth-of-type(2) {
+    margin: 0 15px;
 }
