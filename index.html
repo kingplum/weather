@@ -289,9 +289,9 @@
         var chart    = document.getElementById('chart').getContext('2d'),
         gradient = chart.createLinearGradient(0, 0, 0, 450);
 
-        gradient.addColorStop(0, 'rgba(255, 0,0, 0.5)');
-        gradient.addColorStop(0.5, 'rgba(255, 0, 0, 0.25)');
-        gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
+        gradient.addColorStop(0, 'rgba(255, 250,0, 0.5)');
+        gradient.addColorStop(0.5, 'rgba(255, 250, 0, 0.25)');
+        gradient.addColorStop(1, 'rgba(255, 250, 0, 0)');
 
 
         var data  = {
@@ -301,7 +301,7 @@
                     backgroundColor: gradient,
                     pointBackgroundColor: 'white',
                     borderWidth: 1,
-                    borderColor: '#911215',
+                    borderColor: '#918e12s',
                     data: [50, 55, 80, 81, 54, 50, 60, 70, 40]
             }]
         };
@@ -312,7 +312,7 @@
             maintainAspectRatio: true,
             animation: {
                 easing: 'easeInOutQuad',
-                duration: 520
+                duration: 200
             },
             scales: {
                 xAxes: [{
@@ -342,7 +342,7 @@
             tooltips: {
                 titleFontFamily: 'Open Sans',
                 backgroundColor: 'rgba(0,0,0,0.3)',
-                titleFontColor: 'red',
+                titleFontColor: 'white',
                 caretSize: 5,
                 cornerRadius: 2,
                 xPadding: 10,
