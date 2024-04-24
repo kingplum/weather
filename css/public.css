@@ -39,6 +39,10 @@ img {
     justify-content: space-between;
     align-items: center;
 }
+.f-col {
+    display: flex;
+    align-items: center;
+}
 
 /* slider */
 .slick-slider {

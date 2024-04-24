@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./lib/slick/slick.css">
     <link rel="stylesheet" href="./lib/slick/slick-theme.css">
+    <link rel="stylesheet" href="./lib/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="./css/public.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/chart.css">
@@ -243,7 +244,7 @@
                             </div>
                             <div class="line-chart">
                                 <div class="aspect-ratio">
-                                  <canvas id="chart"></canvas>
+                                  <canvas class="charts"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -269,14 +270,191 @@
                             <span>サイドオフ</span>
                         </div>
                     </div>
-                    <div class="sec2">
-                        <div>
+                    <div class="sec2 d-flex r-center">
+                        <div class="item gap2">
+                                <span>波高(m)</span>
+                                <h4><big>0.3-0.9</big>m</h4>
+                        </div>
+                        <div class="item">
+                            <p>0.3m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p>
+                            <p>0.6m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p>
+                            <p>0.9m 8s <span class="direction">東北東</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(179deg);" src="images/wind-icon.png" alt=""></p>
+                        </div>
+                    </div>
+                    <div class="sec3">
+                        <div class="d-flex tbl">
                             <div>
                                 <div class="wicon"></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                                <div></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div>
+                                <div class="wicon"></div>
+                                <div class="temp"></div>
+                                <div class="wind"></div>
+                                <div class="time"></div>
+                                <div><span class="chart"></span></div>
+                            </div>
+                            <div class="line-chart">
+                                <div class="aspect-ratio">
+                                  <canvas class="charts"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -287,8 +465,8 @@
     <footer>
         <div class="wrap bg footer-wrapper">
             <div class="f-col"><img src="images/wind-icon.png" alt=""><span>風向き</span></div>
-            <div class="f-col"><img src="images/wind-icon.png" alt=""><span>波高</span></div>
-            <div class="f-col"><img src="images/wind-icon.png" alt=""><span>潮汐</span></div>
+            <div class="f-col"><span style="width: 15px; height: 15px; background-color: aqua; display: inline-block; margin-right: 5px;"></span><span>波高</span></div>
+            <div class="f-col"><img src="images/line-chart.png" alt=""><sspan>潮汐</span></div>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -297,76 +475,79 @@
 	<script type="text/javascript" src="./js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        var chart    = document.getElementById('chart').getContext('2d'),
-        gradient = chart.createLinearGradient(0, 0, 0, 450);
+        var charts = document.getElementsByClassName('charts');
+        for (const item of Array.from(charts)) {
+            var chart = item.getContext('2d'),
+            gradient = chart.createLinearGradient(0, 0, 0, 450);
 
-        gradient.addColorStop(0, 'rgba(255, 250,0, 0.5)');
-        gradient.addColorStop(0.5, 'rgba(255, 250, 0, 0.25)');
-        gradient.addColorStop(1, 'rgba(255, 250, 0, 0)');
-
-
-        var data  = {
-            labels: [ '1', '3', '6', '9', '12', '15', '18', '21', '24'],
-            datasets: [{
-                    label: '',
-                    backgroundColor: gradient,
-                    pointBackgroundColor: 'white',
-                    borderWidth: 1,
-                    borderColor: '#efef00',
-                    data: [50, 55, 60, 70, 54, 50, 60, 70, 40]
-            }]
-        };
+            gradient.addColorStop(0, 'rgba(255, 250,0, 0.5)');
+            gradient.addColorStop(0.5, 'rgba(255, 250, 0, 0.25)');
+            gradient.addColorStop(1, 'rgba(255, 250, 0, 0)');
 
 
-        var options = {
-            responsive: true,
-            maintainAspectRatio: false,
-            animation: {
-                easing: 'easeInOutQuad',
-                duration: 450
-            },
-            scales: {
-                xAxes: [{
-                    gridLines: {
-                        color: 'rgba(200, 200, 200, 0.05)',
-                        lineWidth: 1
-                    }
-                }],
-                yAxes: [{
-                    gridLines: {
-                        color: 'rgba(200, 200, 200, 0.08)',
-                        lineWidth: 1
-                    }
+            var data  = {
+                labels: [ '1', '3', '6', '9', '12', '15', '18', '21', '24'],
+                datasets: [{
+                        label: '',
+                        backgroundColor: gradient,
+                        pointBackgroundColor: 'white',
+                        borderWidth: 1,
+                        borderColor: '#efef00',
+                        data: [50, 55, 60, 70, 54, 50, 60, 70, 40]
                 }]
-            },
-            elements: {
-                line: {
-                    tension: 0.4
+            };
+
+
+            var options = {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    easing: 'easeInOutQuad',
+                    duration: 450
+                },
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(200, 200, 200, 0.05)',
+                            lineWidth: 1
+                        }
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            color: 'rgba(200, 200, 200, 0.08)',
+                            lineWidth: 1
+                        }
+                    }]
+                },
+                elements: {
+                    line: {
+                        tension: 0.4
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                point: {
+                    backgroundColor: 'white'
+                },
+                tooltips: {
+                    titleFontFamily: 'Open Sans',
+                    backgroundColor: 'rgba(0,0,0,0.3)',
+                    titleFontColor: 'white',
+                    caretSize: 5,
+                    cornerRadius: 2,
+                    xPadding: 10,
+                    yPadding: 10
                 }
-            },
-            legend: {
-                display: false
-            },
-            point: {
-                backgroundColor: 'white'
-            },
-            tooltips: {
-                titleFontFamily: 'Open Sans',
-                backgroundColor: 'rgba(0,0,0,0.3)',
-                titleFontColor: 'white',
-                caretSize: 5,
-                cornerRadius: 2,
-                xPadding: 10,
-                yPadding: 10
-            }
-        };
+            };
 
 
-        var chartInstance = new Chart(chart, {
-            type: 'line',
-            data: data,
-                options: options
-        });
+            var chartInstance = new Chart(chart, {
+                type: 'line',
+                data: data,
+                    options: options
+            });
+        }
     </script>
 </body>
 </html>

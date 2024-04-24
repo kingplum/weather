@@ -66,3 +66,20 @@
     margin: 0 !important;
     background-color: transparent !important;
 }
+.wicon {
+    padding: 2px;
+}
+.bl {
+    color: #03f8f0;
+}
+.yl {
+    color: #fcc739;
+}
+.wind {
+    position: relative;
+}
+.wind i {
+    position: absolute;
+    bottom: 1%;
+    left: 0;
+}
