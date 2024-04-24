@@ -76,8 +76,10 @@ main .wrap {
 .direction {
     font-size: 17px;
 }
-
-.slick-next {
+.slider-for .slick-prev, .slider-for .slick-next {
+    top: 95%;
+}
+.slick-next:before {
     right: 0px;
     z-index: 10;
     height: 40px;
@@ -85,8 +87,11 @@ main .wrap {
     background: url(../images/next.png) no-repeat;
     filter: brightness(0) invert(1);
     background-size: cover;
+    color: unset;
+    display: inline-flex;
+    position: relative;
 }
-.slick-prev {
+.slick-prev:before {
     left: 0px;
     z-index: 10;
     height: 40px;
@@ -94,10 +99,13 @@ main .wrap {
     background: url(../images/left.png) no-repeat;
     filter: brightness(0) invert(1);
     background-size: cover;
+    color: unset;
+    display: inline-flex;
+    position: relative;
 }
 .slick-next:before,
 .slick-prev:before {
-    content: unset !important;
+    /* content: unset !important; */
 }
 
 .icon-time img {
