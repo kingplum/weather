@@ -50,9 +50,25 @@ jQuery(document).ready(function(){
     $('.temp').each(function(){
       $(this).text(rand_num(20));
     });
+    $('.wicon').each(function(){
+      $(this).html('<img src="https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+rand_icon()+'.svg">');
+    });
+    $('.gap1 div img').each(function(){
+      $(this).attr('src', 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+rand_icon()+'.svg');
+    });
 });
 
 function rand_num(num) {
   let x = Math.floor((Math.random() * num) + 1);
   return x;
+}
+
+function rand_fl(min, max) {
+  let x = Math.floor((Math.random() * (min )) + 1);
+  return x;
+}
+
+function rand_icon() {
+  var icons = ["NIGHT_CLEAR","CLEAR","CLOUDY","NIGHT_CLOUDY","LIGHT_SHOWERS","LIGHT_RAIN","DRIZZLE","NIGHT_LIGHT_RAIN","NIGHT_MIST","NIGHT_MOSTLY_CLEAR","MOSTLY_CLEAR","MOSTLY_CLOUDY","NIGHT_OVERCAST","NIGHT_DRIZZLE","MIST","OVERCAST","LIGHT_SHOWERS_POSSIBLE"];
+  return icons[Math.floor(Math.random() * icons.length)];
 }

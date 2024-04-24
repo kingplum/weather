@@ -1,13 +1,19 @@
+/*  */
+.gap1 div img {
+    width: 5vw;
+}
+
 /* chart css */
 .sec3 {
     height: 47vh;
 }
 
 .tbl {
-    height: 100%;
+    height: calc(100% - 40px);
     overflow-x: scroll;
     position: relative;
     padding-left: 30px;
+    padding-bottom: 38px;
 }
 
 .tbl::-webkit-scrollbar {
@@ -24,7 +30,17 @@
 .tbl > div {
     width: 20px;
     background-color: #0a121d;
-    margin-right: 5px;
+    margin-right: 4px;
+}
+
+.tbl > div > div {
+    text-align: center;
+}
+
+.tbl > div > div:nth-child(2),.tbl > div > div:nth-child(4) {
+    background-color: #000;
+    font-size: 12px;
+    padding: 2px;
 }
 
 .tbl > div > div:nth-child(3) {
