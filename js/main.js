@@ -44,4 +44,15 @@ jQuery(document).ready(function(){
     //   } 
     //   return this.trigger( "mousedown" );
     // };
+    $('.chart').each(function(){
+      $(this).css('height', rand_num(100) + '%');
+    });
+    $('.temp').each(function(){
+      $(this).text(rand_num(20));
+    });
 });
+
+function rand_num(num) {
+  let x = Math.floor((Math.random() * num) + 1);
+  return x;
+}
