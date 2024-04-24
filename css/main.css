@@ -48,38 +48,6 @@ main .wrap {
     height: 12vh;
 }
 
-.sec3 {
-    height: 50vh;
-}
-
-.tbl {
-    height: 100%;
-    overflow-x: scroll;
-}
-
-.tbl::-webkit-scrollbar {
-    width: 2px;
-    height: 2px;
-}
-.tbl::-webkit-scrollbar-track {
-    background-color: darkgrey;
-}
-.tbl::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-.tbl > div {
-    width: 20px;
-    background-color: #0a121d;
-    margin-right: 5px;
-}
-
-.tbl > div > div:nth-child(3) {
-    height: 12%;
-}
-.tbl > div > div:nth-child(5) {
-    height: 74%;
-}
 /* footer */
 footer .wrap {
     height: 6vh;
