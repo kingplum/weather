@@ -1,5 +1,37 @@
 // main js
 jQuery(document).ready(function(){
+    $(window).load(function(){
+      $('.overlay').hide();
+    });
+    var file = 'https://surfline.mjof.xyz/584204204e65fad6a77096d4.csv';
+    $.get(file, function(csv) {
+        var data = $.csv.toArrays(csv, {
+          onParseValue: $.csv.hooks.castToScalar
+        });
+        var weathers = [];
+        var c = 0;
+        var i = 0;
+        $.each(data, function(index, value){
+          if(index > 0 && value[1] != null) {
+            if(c == 24) {
+              c = 0;              
+              i++;
+            }
+            if(c == 0) {
+              weathers.push({
+                'date' : value[1].substring(0,10),
+                'items' : []
+              });
+            }
+            weathers[i].items.push(value);
+            c++;
+          }          
+        });
+        $.each(weathers, function(index, value) {
+          $('.slider-nav').append('<div class="wrap-weather"> <h2>12/13(月)<span>pm</span><span>17:00</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出05:00</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り18:00</span></p> </div>');
+          //$('.slider-for').append('');
+        });
+    });
     $('.slider-for').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -25,49 +57,6 @@ jQuery(document).ready(function(){
       touchMove: false,
       draggable: false,
       accessibility: false
-    });
-    // $.fn.mousedownScroll = function(data, fn) {
-    //   if ( fn == null ) {
-    //       fn = data;
-    //       data = null;
-    //   }    
-    //   var o = fn;
-    //   fn = function(e){
-    //       if(inScrollRange(e)) {
-    //           e.type = "mousedownscroll";
-    //           return o.apply(this, arguments);
-    //       }
-    //       return;
-    //   };
-    //   if ( arguments.length > 0 ) {
-    //       return this.bind( "mousedown", data, fn );
-    //   } 
-    //   return this.trigger( "mousedown" );
-    // };
-    $('.time').each(function(){
-      $(this).text(rand_fl(0.0, 2.9));
-    });
-    $('.temp, .gap1 div span').each(function(){
-      $(this).text(rand_num(20));
-    });
-    $('.wicon').each(function(){
-      $(this).html('<img src="https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+rand_icon()+'.svg">');
-    });
-    $('.gap1 div img').each(function(){
-      $(this).attr('src', 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+rand_icon()+'.svg');
-    });
-    $('.wind').each(function(){
-      $(this).html('<i class="fa-solid fa-location-arrow '+rand_cl()+'" style="rotate: '+rand_num(180)+'deg;"></i>');
-    });
-    $('.tbl > div').each(function(){
-      var num = rand_num(100);
-      $(this).find('.chart').css('height', num + '%');
-      if(num > 50) num = num - 10;
-      if(num > 80) num = num - 20;
-      $(this).find('.wind i').css('bottom', num + '%');
-    });
-    $(window).load(function(){
-      $('.overlay').hide();
     });
 });
 
