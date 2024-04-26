@@ -112,9 +112,13 @@ img {
     height: 6vh;
 }
 
+.slick-dots li {
+    margin: 0;
+}
+
 .slick-dots li button:before {
     color: #fff;
-    font-size: 12px;
+    font-size: 9px;
     opacity: 1;
 }
 
