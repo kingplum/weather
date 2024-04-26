@@ -44,15 +44,20 @@ jQuery(document).ready(function(){
             var c = 0;
             var ss = '';
             var msurt = 0;
+            var line = [];
             $.each(items, function(id, vl){
               c++;
               var vsurt = vl[11].split(',');
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
               asurt.push(surt);
               msurt = Math.max(...asurt);
+              if($.inArray(c, [1, 3, 6, 9, 12, 15, 18, 21, 24]) !== -1) {
+                line.push(vl[14]);
+              }
               if(c == 24) asurt = [];
             });
             $.each(items, function(id, vl){
+              console.log(vl);
               if(vl[3] != null) {
                 var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
               } else {
@@ -98,7 +103,7 @@ jQuery(document).ready(function(){
                         pointBackgroundColor: 'white',
                         borderWidth: 1,
                         borderColor: '#efef00',
-                        data: [50, 55, 60, 70, 54, 50, 60, 70, 40]
+                        data: line
                 }]
             };
             var options = {
@@ -148,6 +153,7 @@ jQuery(document).ready(function(){
                 data: data,
                     options: options
             });
+            line = [];
           }
         });
     });
