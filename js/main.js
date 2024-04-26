@@ -28,6 +28,7 @@ jQuery(document).ready(function(){
         $.each(weathers, function(index, value) {
           if(index == 0) {
             var dt = new Date();
+            var h = dt.getHours();
             var d = value['date'].substring(8,10);
             var m = value['date'].substring(5,7);
             var items = value['items'];
@@ -86,9 +87,26 @@ jQuery(document).ready(function(){
               }
 
               cols += '<div> <div class="wicon"><img src="'+img+'"></div> <div class="temp">'+temp+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> </div>';
+
+              if(id == h) {
+                cwicon = img;
+                ctemp = temp;
+                csurt = Math.round(surt / 3.6 * 10) /10;
+                cdirec = angleToDirection(vl[8]);
+                switch(vl[9]) {
+                  case 'Offshore':
+                    ctype = 'オンショア';
+                    break;
+                  case 'Onshore':
+                    ctype = 'オフショア';
+                    break;
+                  default:
+                    ctype = 'サイド';
+                }
+              }
             });
             $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'(月)<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
-            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="./images/sun-icon.png" alt=""> <div><span></span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>12</big> m/s</strong> </div> <div  class="gap3"> <img src="./images/wind-icon.png" alt=""> </div> <div  class="gap4"> <strong>南南西</strong> <span>サイドオフ</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>0.3-0.9</big>m</h4> </div> <div class="item"> <p>0.3m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.6m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.9m 8s <span class="direction">東北東</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(179deg);" src="images/wind-icon.png" alt=""></p> </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
+            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> <img src="./images/wind-icon.png" alt=""> </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>0.3-0.9</big>m</h4> </div> <div class="item"> <p>0.3m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.6m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.9m 8s <span class="direction">東北東</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(179deg);" src="images/wind-icon.png" alt=""></p> </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
             
             var chart = document.getElementById('charts-'+d).getContext('2d'),
             gradient = chart.createLinearGradient(0, 0, 0, 450);
@@ -158,34 +176,34 @@ jQuery(document).ready(function(){
         });
     });
     $(window).load(function(){
-      var dt = new Date();
-      var h = dt.getHours();
-      $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: true,
-        asNavFor: '.slider-nav',
-        rows: 0,
-        infinite: false,
-        swipe: false,
-        swipeToSlide: false,
-        touchMove: false,
-        draggable: false,
-        accessibility: false
-      });
-      $('.slider-nav').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        asNavFor: '.slider-for',
-        dots: false,
-        rows: 0,
-        infinite: false,
-        swipe: false,
-        swipeToSlide: false,
-        touchMove: false,
-        draggable: false,
-        accessibility: false
-      });
+      // var dt = new Date();
+      // var h = dt.getHours();
+      // $('.slider-for').slick({
+      //   slidesToShow: 1,
+      //   slidesToScroll: 1,
+      //   dots: true,
+      //   asNavFor: '.slider-nav',
+      //   rows: 0,
+      //   infinite: false,
+      //   swipe: false,
+      //   swipeToSlide: false,
+      //   touchMove: false,
+      //   draggable: false,
+      //   accessibility: false
+      // });
+      // $('.slider-nav').slick({
+      //   slidesToShow: 1,
+      //   slidesToScroll: 1,
+      //   asNavFor: '.slider-for',
+      //   dots: false,
+      //   rows: 0,
+      //   infinite: false,
+      //   swipe: false,
+      //   swipeToSlide: false,
+      //   touchMove: false,
+      //   draggable: false,
+      //   accessibility: false
+      // });
       //$('.slider-for').slick('slickGoTo', h);
       $('.overlay').hide();
     });
@@ -200,4 +218,9 @@ function formatAMPM(date) {
   minutes = minutes < 10 ? '0'+minutes : minutes;
   var strTime = ampm + ' ' +hours + ':' + minutes ;
   return strTime;
+}
+function angleToDirection(angle) {
+  const directions = ['北', '北北東', '北東', '東北東', '東', '東南東', '南東', '南南東', '南', '南南西', '南西', '西南西', '西', '西北西', '北西', '北北西'];
+  const index = Math.round(angle / 22.5) % 16;
+  return directions[index];
 }
