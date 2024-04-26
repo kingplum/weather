@@ -139,3 +139,7 @@ img {
 .slider-for .slick-prev, .slider-for .slick-next {
     top: 98%;
 }
+
+button.slick-disabled {
+    display: none !important;
+}
