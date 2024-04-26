@@ -56,7 +56,7 @@ jQuery(document).ready(function(){
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
               asurt.push(surt);
               msurt = Math.max(...asurt);
-              if($.inArray(c, [1, 3, 6, 9, 12, 15, 18, 21, 24]) !== -1) {
+              if($.inArray(c, [3, 6, 9, 12, 15, 18, 20]) !== -1) {
                 line.push(vl[14]);
               }
               if(c == 24) asurt = [];
@@ -83,7 +83,7 @@ jQuery(document).ready(function(){
               var vsurt = vl[11].split(',');
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
 
-              var vswell = vl[12].split(',');
+              // var vswell = vl[12].split(',');
               // console.log(vswell);
 
               if(surt == msurt) {
@@ -128,7 +128,7 @@ jQuery(document).ready(function(){
             gradient.addColorStop(0.5, 'rgba(255, 250, 0, 0.25)');
             gradient.addColorStop(1, 'rgba(255, 250, 0, 0)');
             var data  = {
-                labels: [ '0', '3', '6', '9', '12', '15', '18', '21', '24'],
+                labels: ['3', '6', '9', '12', '15', '18', '20'],
                 datasets: [{
                         label: '',
                         backgroundColor: gradient,
@@ -197,8 +197,6 @@ jQuery(document).ready(function(){
     });
     $(window).load(function(){
       setTimeout(() => {
-        var dt = new Date();
-        var h = dt.getHours();
         $('.slider-for').slick({
           slidesToShow: 1,
           slidesToScroll: 1,

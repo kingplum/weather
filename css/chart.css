@@ -39,6 +39,10 @@
     min-width: 30px;
 }
 
+.tbl > div:nth-child(1), .tbl > div:nth-child(2), .tbl > div:nth-child(2), .tbl > div:nth-child(22), .tbl > div:nth-child(23), .tbl > div:nth-child(24) {
+    display: none;
+}
+
 .tbl > div.act::before {
     content: '';
     height: 100%;
@@ -80,7 +84,7 @@
     bottom: 0;
     left: 0;
     z-index: 2;
-    width: 856px !important;
+    width: 689px !important;
     margin: 0 !important;
     background-color: transparent !important;
 }
