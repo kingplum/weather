@@ -39,6 +39,16 @@
     min-width: 30px;
 }
 
+.tbl > div.act::before {
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 1px;
+    background-color: #fff;
+    top: 0;
+    margin-left: 15px;
+}
+
 .tbl > div > div {
     text-align: center;
 }

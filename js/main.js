@@ -1,6 +1,7 @@
 // main js
 jQuery(document).ready(function(){
     var file = 'https://surfline.mjof.xyz/584204204e65fad6a77096d4.csv';
+    var cdat;
     $.get(file, function(csv) {
         var data = $.csv.toArrays(csv, {
           onParseValue: $.csv.hooks.castToScalar
@@ -26,8 +27,9 @@ jQuery(document).ready(function(){
         });
         //console.log(weathers);
         $.each(weathers, function(index, value) {
-          if(index == 0) {
+          // if(index == 0) {
             var dt = new Date();
+            var cda = dt.getDate(); 
             var h = dt.getHours();
             var d = value['date'].substring(8,10);
             var m = value['date'].substring(5,7);
@@ -46,6 +48,8 @@ jQuery(document).ready(function(){
             var ss = '';
             var msurt = 0;
             var line = [];
+            var cwicon, ctemp, csurt, cdirec, cwind, cvsurt, misurt, masurt, cls;
+            if(cda == d) cdat = index;
             $.each(items, function(id, vl){
               c++;
               var vsurt = vl[11].split(',');
@@ -58,7 +62,7 @@ jQuery(document).ready(function(){
               if(c == 24) asurt = [];
             });
             $.each(items, function(id, vl){
-              console.log(vl);
+              // console.log(vl);
               if(vl[3] != null) {
                 var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
               } else {
@@ -74,10 +78,13 @@ jQuery(document).ready(function(){
               } else {
                 var onoff = ' color:#fff';
               }
-              var wind = '<span style="transform:rotate(-130deg);"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+'"></i></span>';
+              var wind = '<span style="transform:rotate(-225deg);"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+'"></i></span>';
 
               var vsurt = vl[11].split(',');
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+
+              var vswell = vl[12].split(',');
+              // console.log(vswell);
 
               if(surt == msurt) {
                 ss = 'style="height: 100%"';
@@ -86,13 +93,15 @@ jQuery(document).ready(function(){
                 ss = 'style="height: '+pc+'%"';
               }
 
-              cols += '<div> <div class="wicon"><img src="'+img+'"></div> <div class="temp">'+temp+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> </div>';
-
               if(id == h) {
                 cwicon = img;
                 ctemp = temp;
                 csurt = Math.round(surt / 3.6 * 10) /10;
                 cdirec = angleToDirection(vl[8]);
+                cwind = '<span style="transform:rotate(-225deg);"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+';font-size: 55px;"></i></span>';
+                cvsurt = vl[11].split(',');
+                misurt = parseFloat(vsurt[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                masurt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
                 switch(vl[9]) {
                   case 'Offshore':
                     ctype = 'オンショア';
@@ -103,10 +112,15 @@ jQuery(document).ready(function(){
                   default:
                     ctype = 'サイド';
                 }
+                cls = 'act';
+              } else {
+                cls = '';
               }
+
+              cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp">'+temp+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> </div>';
             });
             $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'(月)<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
-            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> <img src="./images/wind-icon.png" alt=""> </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>??-??</big>m</h4> </div> <div class="item"> <p>0.3m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.6m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.9m 8s <span class="direction">東北東</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(179deg);" src="images/wind-icon.png" alt=""></p> </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
+            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item"> <p>0.3m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.6m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.9m 8s <span class="direction">東北東</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(179deg);" src="images/wind-icon.png" alt=""></p> </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
             
             var chart = document.getElementById('charts-'+d).getContext('2d'),
             gradient = chart.createLinearGradient(0, 0, 0, 450);
@@ -114,7 +128,7 @@ jQuery(document).ready(function(){
             gradient.addColorStop(0.5, 'rgba(255, 250, 0, 0.25)');
             gradient.addColorStop(1, 'rgba(255, 250, 0, 0)');
             var data  = {
-                labels: [ '1', '3', '6', '9', '12', '15', '18', '21', '24'],
+                labels: [ '0', '3', '6', '9', '12', '15', '18', '21', '24'],
                 datasets: [{
                         label: '',
                         backgroundColor: gradient,
@@ -178,40 +192,44 @@ jQuery(document).ready(function(){
                     options: options
             });
             line = [];
-          }
+          // }
         });
     });
     $(window).load(function(){
-      // var dt = new Date();
-      // var h = dt.getHours();
-      // $('.slider-for').slick({
-      //   slidesToShow: 1,
-      //   slidesToScroll: 1,
-      //   dots: true,
-      //   asNavFor: '.slider-nav',
-      //   rows: 0,
-      //   infinite: false,
-      //   swipe: false,
-      //   swipeToSlide: false,
-      //   touchMove: false,
-      //   draggable: false,
-      //   accessibility: false
-      // });
-      // $('.slider-nav').slick({
-      //   slidesToShow: 1,
-      //   slidesToScroll: 1,
-      //   asNavFor: '.slider-for',
-      //   dots: false,
-      //   rows: 0,
-      //   infinite: false,
-      //   swipe: false,
-      //   swipeToSlide: false,
-      //   touchMove: false,
-      //   draggable: false,
-      //   accessibility: false
-      // });
-      //$('.slider-for').slick('slickGoTo', h);
-      $('.overlay').hide();
+      setTimeout(() => {
+        var dt = new Date();
+        var h = dt.getHours();
+        $('.slider-for').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true,
+          asNavFor: '.slider-nav',
+          rows: 0,
+          infinite: false,
+          swipe: false,
+          swipeToSlide: false,
+          touchMove: false,
+          draggable: false,
+          accessibility: false
+        });
+        $('.slider-nav').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          dots: false,
+          rows: 0,
+          infinite: false,
+          swipe: false,
+          swipeToSlide: false,
+          touchMove: false,
+          draggable: false,
+          accessibility: false
+        });
+        $('.slider-for').slick('slickGoTo', cdat);
+      }, 1000);
+      setTimeout(() => {
+        $('.overlay').hide();
+      }, 2000);
     });
 });
 
