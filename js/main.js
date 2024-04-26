@@ -228,6 +228,7 @@ jQuery(document).ready(function(){
         $('.slider-for').slick('slickGoTo', cdat);
       }, 1000);
       setTimeout(() => {
+        $('body').removeClass('loading');
         $('.overlay').hide();
       }, 2000);
     });

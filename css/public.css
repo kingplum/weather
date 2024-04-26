@@ -8,6 +8,10 @@ body {
     color: #fff;
 }
 
+body.loading {
+    overflow: hidden;
+}
+
 img {
     max-width: 100%;
 }
