@@ -17,8 +17,8 @@
     height: calc(100% - 40px);
     overflow-x: scroll;
     position: relative;
-    padding-left: 30px;
-    padding-bottom: 38px;
+    padding-left: 37px;
+    padding-bottom: 40px;
 }
 
 .tbl::-webkit-scrollbar {
