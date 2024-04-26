@@ -136,12 +136,18 @@ jQuery(document).ready(function(){
                         gridLines: {
                             color: 'rgba(200, 200, 200, 0.05)',
                             lineWidth: 1
+                        },
+                        ticks: {
+                          fontColor: "#fff"
                         }
                     }],
                     yAxes: [{
                         gridLines: {
                             color: 'rgba(200, 200, 200, 0.08)',
                             lineWidth: 1
+                        },
+                        ticks: {
+                          fontColor: "#fff"
                         }
                     }]
                 },
