@@ -17,7 +17,7 @@
     height: calc(100% - 40px);
     overflow-x: scroll;
     position: relative;
-    padding-left: 37px;
+    padding-left: 20px;
     padding-bottom: 40px;
 }
 
@@ -82,9 +82,9 @@
 .line-chart {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 10px;
     z-index: 2;
-    width: 689px !important;
+    width: 665px !important;
     margin: 0 !important;
     background-color: transparent !important;
 }

@@ -25,9 +25,9 @@ jQuery(document).ready(function(){
             c++;
           }          
         });
-        //console.log(weathers);
         $.each(weathers, function(index, value) {
           // if(index == 0) {
+            console.log(value);
             var dt = new Date();
             var cda = dt.getDate(); 
             var h = dt.getHours();
@@ -35,12 +35,20 @@ jQuery(document).ready(function(){
             var m = value['date'].substring(5,7);
             var items = value['items'];
             var cols = '';
-            var rh = new Date(items[0][4]).getHours();
-            rh = rh < 10 ? '0' + rh : rh;
+            if(items[0][4] == null) {
+              rh = 4;
+            } else {
+              var rh = new Date(items[0][4]).getHours();
+              rh = rh < 10 ? '0' + rh : rh;
+            }
             var rm = new Date(items[0][4]).getMinutes();
             rm = rm < 10 ? '0'+rm : rm;
-            var sh = new Date(items[10][5]).getHours();
-            sh = sh < 10 ? '0' + sh : rh;
+            if(items[0][4] == null) {
+              sh = 16;
+            } else {
+              var sh = new Date(items[10][5]).getHours();
+              sh = parseInt(sh, 10) + 12;
+            }
             var sm = new Date(items[10][5]).getMinutes();
             sm = sm < 10 ? '0' + sm : sm;
             var asurt = [];
@@ -83,9 +91,6 @@ jQuery(document).ready(function(){
               var vsurt = vl[11].split(',');
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
 
-              // var vswell = vl[12].split(',');
-              // console.log(vswell);
-
               if(surt == msurt) {
                 ss = 'style="height: 100%"';
               } else {
@@ -113,6 +118,38 @@ jQuery(document).ready(function(){
                     ctype = 'サイド';
                 }
                 cls = 'act';
+
+                var vswell = vl[12].split(',');
+                s11 = parseFloat(vswell[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                s12 = parseFloat(vswell[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                s13 = parseFloat(vswell[3].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                s21 = parseFloat(vswell[4].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                s22 = parseFloat(vswell[5].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                s23 = parseFloat(vswell[7].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                s31 = parseFloat(vswell[8].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                s32 = parseFloat(vswell[9].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                s33 = parseFloat(vswell[11].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                if(s11 > 0) {
+                  a1 = angleToDirection(s13);
+                  ico1 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                  ts1 = '<p>'+s11+'m '+s12+'s <span class="direction">'+a1+'</span>'+ico1+'</p>';
+                } else {
+                  ts1 = '';
+                }
+                if(s21 > 0) {
+                  a2 = angleToDirection(s23);
+                  ico2 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                  ts2 = '<p>'+s21+'m '+s22+'s <span class="direction">'+a2+'</span>'+ico2+'</p>';
+                } else {
+                  ts2 = '';
+                }
+                if(s31 > 0) {
+                  a3 = angleToDirection(s33);
+                  ico3 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                  ts3 = '<p>'+s31+'m '+s32+'s <span class="direction">'+a3+'</span>'+ico3+'</p>';
+                } else {
+                  ts3 = '';
+                }
               } else {
                 cls = '';
               }
@@ -120,15 +157,15 @@ jQuery(document).ready(function(){
               cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp">'+temp+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> </div>';
             });
             $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'(月)<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
-            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item"> <p>0.3m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.6m 8s <span class="direction">南南西</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(269deg);" src="images/wind-icon.png" alt=""></p> <p>0.9m 8s <span class="direction">東北東</span><img class="img-direction" style="transform-origin:50% 50%;transform:rotate(179deg);" src="images/wind-icon.png" alt=""></p> </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
+            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
             
-            var chart = document.getElementById('charts-'+d).getContext('2d'),
-            gradient = chart.createLinearGradient(0, 0, 0, 450);
+            var ctx = document.getElementById('charts-'+d).getContext('2d'),
+            gradient = ctx.createLinearGradient(0, 0, 0, 450);
             gradient.addColorStop(0, 'rgba(255, 250,0, 0.5)');
             gradient.addColorStop(0.5, 'rgba(255, 250, 0, 0.25)');
             gradient.addColorStop(1, 'rgba(255, 250, 0, 0)');
             var data  = {
-                labels: ['3', '6', '9', '12', '15', '18', '20'],
+                labels: ['3h', '6h', '9h', '12h', '15h', '18h', '20h'],
                 datasets: [{
                         label: '',
                         backgroundColor: gradient,
@@ -138,36 +175,61 @@ jQuery(document).ready(function(){
                         data: line
                 }]
             };
-            var options = {
+            var chartInstance = new Chart(ctx, {
+              type: 'line',
+              data: data,
+              options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 animation: {
                     easing: 'easeInOutQuad',
-                    duration: 450
+                    duration: 450,
+                    onComplete: function(animation) {
+                      var configOptions = this.chart.config.options;
+                      var ctx = this.chart.ctx;
+                      var scales = this.chart.scales;
+                      var datasets = this.chart.config.data.datasets;
+                      for(var i = 0; i< datasets.length; i++){
+                        var meta = this.chart.getDatasetMeta(i);
+                        var elements = meta.data;
+                        for (var j = 0; j < elements.length; j++) {
+                          var view = elements[j]._view;                  
+                          var text = configOptions.barGoals ? datasets[i].rawData[j] : datasets[i].data[j];
+                          var textWidth = ctx.measureText(text).width;
+                          var x = view.x - (textWidth / 2) + 5;
+                          var y = view.y - 3;
+                          ctx.save();
+                          ctx.fillText(text + 'm', x, y);
+                          ctx.restore();
+                        }
+                      }
+                    }
                 },
                 scales: {
-                    xAxes: [{
-                        gridLines: {
-                            color: 'rgba(200, 200, 200, 0.05)',
-                            lineWidth: 1
-                        },
-                        ticks: {
-                          fontColor: "#fff"
-                        }
-                    }],
-                    yAxes: [{
-                        gridLines: {
-                            color: 'rgba(200, 200, 200, 0.08)',
-                            lineWidth: 1
-                        },
-                        ticks: {
-                          fontColor: "#fff"
-                        }
-                    }]
+                  xAxes: [{
+                      gridLines: {
+                          color: 'rgba(200, 200, 200, 0.05)',
+                          lineWidth: 1
+                      },
+                      ticks: {
+                        fontColor: "#fff"
+                      }
+                  }],
+                  yAxes: [{
+                    //display: false,
+                    gridLines: {
+                        color: 'rgba(200, 200, 200, 0.08)',
+                        lineWidth: 1
+                    },
+                    ticks: {
+                      fontColor: "#fff",
+                      display: false
+                    }
+                  }]
                 },
                 elements: {
                     line: {
-                        tension: 0.4
+                        tension: 0.5
                     }
                 },
                 legend: {
@@ -175,21 +237,8 @@ jQuery(document).ready(function(){
                 },
                 point: {
                     backgroundColor: 'white'
-                },
-                tooltips: {
-                    titleFontFamily: 'Open Sans',
-                    backgroundColor: 'rgba(0,0,0,0.3)',
-                    titleFontColor: 'white',
-                    caretSize: 5,
-                    cornerRadius: 2,
-                    xPadding: 10,
-                    yPadding: 10
                 }
-            };
-            var chartInstance = new Chart(chart, {
-                type: 'line',
-                data: data,
-                    options: options
+              }
             });
             line = [];
           // }
