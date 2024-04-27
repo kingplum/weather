@@ -197,7 +197,7 @@ jQuery(document).ready(function(){
                           var text = configOptions.barGoals ? datasets[i].rawData[j] : datasets[i].data[j];
                           var textWidth = ctx.measureText(text).width;
                           var x = view.x - (textWidth / 2) + 5;
-                          var y = view.y - 3;
+                          var y = view.y;
                           ctx.save();
                           ctx.fillText(text + 'm', x, y);
                           ctx.restore();
