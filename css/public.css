@@ -73,6 +73,7 @@ img {
 /* chart */
 .chart {
     background-color: #01cffe;
+    background-image: linear-gradient(#01cffe, #000);
     height: 1%;
     display: block;
 }

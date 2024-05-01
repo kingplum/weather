@@ -91,13 +91,15 @@ jQuery(document).ready(function(){
               var vsurt = vl[11].split(',');
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
 
-              if(msurt < 3) {
-                var pc = surt * 100 / 3;
-                ss = 'style="height: '+pc+'%"';
+              var pc = surt * 100 / 1.9;
+              if(surt >= 2.0 && surt <= 2.5) {
+                ss = 'style="height: '+pc+'%;background-color: blue;background-image: linear-gradient(blue, #000);"';
+              } else if (surt >= 2.6) {
+                ss = 'style="height: '+pc+'%;background-color: red;background-image: linear-gradient(red, #000);"';
               } else {
-                var pc = surt * 100 / msurt;
                 ss = 'style="height: '+pc+'%"';
-              }     
+              }
+   
 
               if(id == h) {
                 cwicon = img;
@@ -161,10 +163,10 @@ jQuery(document).ready(function(){
             $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
             
             var ctx = document.getElementById('charts-'+d).getContext('2d'),
-            gradient = ctx.createLinearGradient(0, 0, 0, 450);
-            gradient.addColorStop(0, 'rgba(255, 250,0, 0.5)');
-            gradient.addColorStop(0.5, 'rgba(255, 250, 0, 0.25)');
-            gradient.addColorStop(1, 'rgba(255, 250, 0, 0)');
+            gradient = ctx.createLinearGradient(255, 255, 255, 1);
+            gradient.addColorStop(1, 'rgba(157, 126, 5, 1)');
+            gradient.addColorStop(0.5, 'rgba(157, 126, 5, 0)');
+            gradient.addColorStop(0, 'rgba(157, 126, 5, 0)');
             var data  = {
                 labels: ['3h', '6h', '9h', '12h', '15h', '18h', '20h'],
                 datasets: [{
@@ -217,7 +219,6 @@ jQuery(document).ready(function(){
                       }
                   }],
                   yAxes: [{
-                    //display: false,
                     gridLines: {
                         color: 'rgba(200, 200, 200, 0.08)',
                         lineWidth: 1
