@@ -91,8 +91,13 @@ jQuery(document).ready(function(){
               var vsurt = vl[11].split(',');
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
 
-              var pc = surt * 100 / 1.9;
-              ss = 'style="height: '+pc+'%"';              
+              if(msurt < 3) {
+                var pc = surt * 100 / 3;
+                ss = 'style="height: '+pc+'%"';
+              } else {
+                var pc = surt * 100 / msurt;
+                ss = 'style="height: '+pc+'%"';
+              }     
 
               if(id == h) {
                 cwicon = img;
