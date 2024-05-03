@@ -133,8 +133,12 @@ img {
 }
 
 .slick-prev, .slick-next {
-    width: 80px;
+    width: 40px;
     height: 40px;
+}
+
+.slider-nav .slick-prev, .slider-nav .slick-next {
+    width: 80px;
 }
 
 .slider-for .slick-prev, .slider-for .slick-next {

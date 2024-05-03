@@ -80,11 +80,11 @@ main .wrap {
     top: 95%;
 }
 .slick-next:before {
-    content: '今日';
+    content: '';
     right: 0px;
     z-index: 10;
     height: 40px;
-    width: 80px;
+    width: 40px;
     background: url(../images/next.png) right center no-repeat;
     filter: brightness(0) invert(1);
     background-size: contain;
@@ -94,11 +94,11 @@ main .wrap {
     align-items: center;
 }
 .slick-prev:before {
-    content: '明日';
+    content: '';
     left: 0px;
     z-index: 10;
     height: 40px;
-    width: 80px;
+    width: 40px;
     background: url(../images/left.png) left center no-repeat;
     filter: brightness(0) invert(1);
     background-size: contain;
@@ -107,6 +107,14 @@ main .wrap {
     position: relative;
     align-items: center;
     flex-direction: row-reverse;
+}
+.slider-nav .slick-next:before  {
+    content: '今日';
+    width: 80px;
+}
+.slider-nav .slick-prev:before  {
+    content: '明日';
+    width: 80px;
 }
 .slick-next:before,
 .slick-prev:before {
