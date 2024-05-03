@@ -80,32 +80,37 @@ main .wrap {
     top: 95%;
 }
 .slick-next:before {
+    content: '今日';
     right: 0px;
     z-index: 10;
     height: 40px;
-    width: 40px;
-    background: url(../images/next.png) no-repeat;
+    width: 80px;
+    background: url(../images/next.png) right center no-repeat;
     filter: brightness(0) invert(1);
-    background-size: cover;
+    background-size: contain;
     color: unset;
     display: inline-flex;
     position: relative;
+    align-items: center;
 }
 .slick-prev:before {
+    content: '明日';
     left: 0px;
     z-index: 10;
     height: 40px;
-    width: 40px;
-    background: url(../images/left.png) no-repeat;
+    width: 80px;
+    background: url(../images/left.png) left center no-repeat;
     filter: brightness(0) invert(1);
-    background-size: cover;
+    background-size: contain;
     color: unset;
     display: inline-flex;
     position: relative;
+    align-items: center;
+    flex-direction: row-reverse;
 }
 .slick-next:before,
 .slick-prev:before {
-    /* content: unset !important; */
+    color: #fff;
 }
 
 .icon-time img {

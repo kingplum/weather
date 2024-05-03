@@ -70,7 +70,7 @@ jQuery(document).ready(function(){
               if(c == 24) asurt = [];
             });
             $.each(items, function(id, vl){
-              // console.log(vl);
+              console.log(vl);
               if(vl[3] != null) {
                 var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
               } else {
@@ -78,6 +78,7 @@ jQuery(document).ready(function(){
               }
 
               var temp = Math.round(vl[2] * 10) / 10;
+              var swind = Math.round(vl[7] / 3.6 * 10) /10;
 
               if (vl[9] == "Offshore" ){
                 var onoff = ' color:#7fffd4';
@@ -86,7 +87,23 @@ jQuery(document).ready(function(){
               } else {
                 var onoff = ' color:#fff';
               }
-              var wind = '<span style="transform:rotate(-225deg);"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+'"></i></span>';
+
+              var sls = '';
+
+              if(swind >= 0 && swind <= 2) {
+                sls = 'lv1';
+              } else if (swind >= 3 && swind <= 5) {
+                sls = 'lv2';
+              } else if (swind >= 6 && swind <= 8) {
+                sls = 'lv3';
+              } else if (swind >= 9 && swind <= 11) {
+                sls = 'lv4';
+              } else {
+                sls = 'lv5';
+              }
+
+
+              var wind = '<span style="transform:rotate(-225deg);" class="'+sls+'"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+'"></i></span>';
 
               var vsurt = vl[11].split(',');
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
@@ -104,7 +121,7 @@ jQuery(document).ready(function(){
               if(id == h) {
                 cwicon = img;
                 ctemp = temp;
-                csurt = Math.round(surt / 3.6 * 10) /10;
+                csurt = swind;
                 cdirec = angleToDirection(vl[8]);
                 cwind = '<span style="transform:rotate(-225deg);"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+';font-size: 55px;"></i></span>';
                 cvsurt = vl[11].split(',');
