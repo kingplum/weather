@@ -78,16 +78,16 @@
     bottom: 0;
 }
 .tbl > div > div:nth-child(3) span.lv2 {
-    bottom: 20%;
+    bottom: 15%;
 }
 .tbl > div > div:nth-child(3) span.lv3 {
-    bottom: 30%;
+    bottom: 15%;
 }
 .tbl > div > div:nth-child(3) span.lv4 {
-    bottom: 40%;
+    bottom: 35%;
 }
 .tbl > div > div:nth-child(3) span.lv5 {
-    bottom: 50%;
+    bottom: 45%;
 }
 .tbl > div > div:nth-child(3) span.lv4 i, .tbl > div > div:nth-child(3) span.lv5 i {
     font-size: 130%;
