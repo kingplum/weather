@@ -18,13 +18,13 @@
     height: calc(100% - 40px);
     overflow-x: scroll;
     position: relative;
-    padding-left: 20px;
+    padding-left: 10px;
     padding-bottom: 40px;
 }
 
-.slick-slide.slick-current .tbl {
+/* .slick-slide.slick-current .tbl {
     position: static;
-}
+} */
 
 .tbl::-webkit-scrollbar {
     width: 4px;
@@ -112,9 +112,9 @@
 .line-chart {
     position: absolute;
     bottom: 10px;
-    left: 10px;
+    left: 15px;
     z-index: 2;
-    width: 665px !important;
+    width: 638px !important;
     margin: 0 !important;
     background-color: transparent !important;
 }

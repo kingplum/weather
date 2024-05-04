@@ -185,7 +185,7 @@ jQuery(document).ready(function(){
             gradient.addColorStop(0.5, 'rgba(157, 126, 5, 0)');
             gradient.addColorStop(0, 'rgba(157, 126, 5, 0)');
             var data  = {
-                labels: ['3h', '6h', '9h', '12h', '15h', '18h', '20h'],
+                labels: ['3', '6', '9', '12', '15', '18', '20'],
                 datasets: [{
                         label: '',
                         backgroundColor: gradient,
@@ -242,7 +242,9 @@ jQuery(document).ready(function(){
                     },
                     ticks: {
                       fontColor: "#fff",
-                      display: false
+                      display: false,
+                      beginAtZero: true,
+                      padding: 25
                     }
                   }]
                 },
