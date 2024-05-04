@@ -35,6 +35,8 @@ jQuery(document).ready(function(){
             var m = value['date'].substring(5,7);
             var items = value['items'];
             var cols = '';
+            var today = new Date(value['date']);
+            var day = today.getDay();
             if(items[0][4] == null) {
               rh = 4;
             } else {
@@ -184,7 +186,7 @@ jQuery(document).ready(function(){
 
               cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp" '+tls+'>'+temp+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> </div>';
             });
-            $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'(月)<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
+            $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'('+getdayofweek(day)+')<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
             $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> <p><span>オン</span>/<span>サイド</span>/<span>オフ</span></p> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
             
             var ctx = document.getElementById('charts-'+d).getContext('2d'),
@@ -324,4 +326,8 @@ function angleToDirection(angle) {
   const directions = ['北', '北北東', '北東', '東北東', '東', '東南東', '南東', '南南東', '南', '南南西', '南西', '西南西', '西', '西北西', '北西', '北北西'];
   const index = Math.round(angle / 22.5) % 16;
   return directions[index];
+}
+function getdayofweek(num) {
+  const days = ['日', '月', '火', '水', '木', '金', '土'];
+  return days[num];
 }
