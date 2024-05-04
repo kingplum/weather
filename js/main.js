@@ -88,7 +88,7 @@ jQuery(document).ready(function(){
                 var onoff = ' color:#fff';
               }
 
-              var sls = '';
+              var sls = '', tls = '';
 
               if(swind >= 0 && swind <= 2) {
                 sls = 'lv1';
@@ -100,6 +100,10 @@ jQuery(document).ready(function(){
                 sls = 'lv4';
               } else {
                 sls = 'lv5';
+              }
+
+              if(temp > 10) {
+                tls = 'style="color: red;"';
               }
 
 
@@ -153,35 +157,35 @@ jQuery(document).ready(function(){
                 s31 = parseFloat(vswell[8].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
                 s32 = parseFloat(vswell[9].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
                 s33 = parseFloat(vswell[11].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                if(s11 > 0) {
+                // if(s11 > 0) {
                   a1 = angleToDirection(s13);
                   ico1 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
                   ts1 = '<p>'+s11+'m '+s12+'s <span class="direction">'+a1+'</span>'+ico1+'</p>';
-                } else {
-                  ts1 = '';
-                }
-                if(s21 > 0) {
+                // } else {
+                //   ts1 = '';
+                // }
+                // if(s21 > 0) {
                   a2 = angleToDirection(s23);
                   ico2 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
                   ts2 = '<p>'+s21+'m '+s22+'s <span class="direction">'+a2+'</span>'+ico2+'</p>';
-                } else {
-                  ts2 = '';
-                }
-                if(s31 > 0) {
+                // } else {
+                //   ts2 = '';
+                // }
+                // if(s31 > 0) {
                   a3 = angleToDirection(s33);
                   ico3 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
                   ts3 = '<p>'+s31+'m '+s32+'s <span class="direction">'+a3+'</span>'+ico3+'</p>';
-                } else {
-                  ts3 = '';
-                }
+                // } else {
+                //   ts3 = '';
+                // }
               } else {
                 cls = '';
               }
 
-              cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp">'+temp+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> </div>';
+              cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp" '+tls+'>'+temp+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> </div>';
             });
             $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'(月)<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
-            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
+            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap2"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> <p><span>オン</span>/<span>サイド</span>/<span>オフ</span></p> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
             
             var ctx = document.getElementById('charts-'+d).getContext('2d'),
             gradient = ctx.createLinearGradient(255, 255, 255, 1);

@@ -17,7 +17,22 @@
     height: 100%;
     overflow-x: scroll;
     position: relative;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
+}
+
+.tbl > p {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 75px;
+}
+
+.tbl > p span:nth-child(1) {
+    color: #03f8f0;
+}
+
+.tbl > p span:nth-child(3) {
+    color: #fcc739;
 }
 
 /* .slick-slide.slick-current .tbl {
@@ -87,16 +102,16 @@
     bottom: 0;
 }
 .tbl > div > div:nth-child(3) span.lv2 {
-    bottom: 15%;
+    bottom: 20%;
 }
 .tbl > div > div:nth-child(3) span.lv3 {
-    bottom: 15%;
+    bottom: 30%;
 }
 .tbl > div > div:nth-child(3) span.lv4 {
-    bottom: 35%;
+    bottom: 40%;
 }
 .tbl > div > div:nth-child(3) span.lv5 {
-    bottom: 45%;
+    bottom: 50%;
 }
 .tbl > div > div:nth-child(3) span.lv4 i, .tbl > div > div:nth-child(3) span.lv5 i {
     font-size: 130%;
@@ -109,7 +124,7 @@
 }
 .line-chart {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     left: 5px;
     z-index: 2;
     width: 635px !important;
