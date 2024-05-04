@@ -1,7 +1,7 @@
 /* header */
 header .wrap {
     background-color: #06101c;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 header .wrap .slick-slide {
@@ -134,7 +134,7 @@ main .wrap {
     justify-content: center;
 }
 header .wrap .wrap-weather h2{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 header .wrap .wrap-weather h2 span {
     margin: 0 5px;
