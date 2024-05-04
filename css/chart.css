@@ -11,6 +11,7 @@
 /* chart css */
 .sec3 {
     height: 47vh;
+    position: relative;
 }
 
 .tbl {
@@ -19,6 +20,10 @@
     position: relative;
     padding-left: 20px;
     padding-bottom: 40px;
+}
+
+.slick-slide.slick-current .tbl {
+    position: static;
 }
 
 .tbl::-webkit-scrollbar {
@@ -48,6 +53,12 @@
 }
 
 .tbl > div.act::before {
+    content: 'Now';
+    position: absolute;
+    top: -20px;
+}
+
+.tbl > div.act::after {
     content: '';
     height: 100%;
     position: absolute;
