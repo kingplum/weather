@@ -302,11 +302,11 @@ jQuery(document).ready(function(){
           accessibility: false
         });
         $('.slider-for').slick('slickGoTo', cdat);
-      }, 1000);
+      }, 2000);
       setTimeout(() => {
         $('body').removeClass('loading');
         $('.overlay').hide();
-      }, 2000);
+      }, 3000);
     });
 });
 
