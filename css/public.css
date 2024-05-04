@@ -98,6 +98,7 @@ img {
 
 .slick-dotted.slick-slider {
     overflow: visible;
+    margin-bottom: 25px;
 }
 
 .slick-prev {
@@ -112,7 +113,6 @@ img {
 
 .slick-dots {
     z-index: 9;
-    bottom: 0;
     background-color: #06101c;
     height: 6vh;
 }
@@ -139,10 +139,6 @@ img {
 
 .slider-nav .slick-prev, .slider-nav .slick-next {
     width: 70px;
-}
-
-.slider-for .slick-prev, .slider-for .slick-next {
-    top: 98%;
 }
 
 button.slick-disabled {

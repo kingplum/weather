@@ -2,6 +2,7 @@
 header .wrap {
     background-color: #06101c;
     padding: 10px 0;
+    min-height: 70px;
 }
 
 header .wrap .slick-slide {
@@ -17,11 +18,14 @@ header .wrap .slick-slide * {
 
 /* main */
 main .wrap {
-    height: 80vh;
+    /* height: 80vh; */
 }
+/* main .wrap .slick-slide {
+    min-height: 500px;
+} */
 .sec1 {
     padding: 10px;
-    height: 12vh;
+    height: 90px;
 }
 .sec1 > div *:not(big) {
     display: block;
@@ -49,6 +53,7 @@ main .wrap {
     display: flex;
     flex-wrap: wrap;
     background: #273649;
+    height: 110px;
 }
 .sec2 .item {
     flex-basis: 50%;
@@ -77,7 +82,7 @@ main .wrap {
     font-size: 17px;
 }
 .slider-for .slick-prev, .slider-for .slick-next {
-    top: 96%;
+    top: calc(100% + 5px);
 }
 .slick-next:before {
     content: '';
