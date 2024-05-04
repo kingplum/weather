@@ -98,7 +98,7 @@ img {
 
 .slick-dotted.slick-slider {
     overflow: visible;
-    margin-bottom: 25px;
+    margin-bottom: 43px;
 }
 
 .slick-prev {
@@ -114,7 +114,8 @@ img {
 .slick-dots {
     z-index: 9;
     background-color: #06101c;
-    height: 6vh;
+    height: 44px;
+    bottom: -44px;
 }
 
 .slick-dots li {

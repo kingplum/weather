@@ -17,7 +17,7 @@
     height: 100%;
     overflow-x: scroll;
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 
 .tbl > p {
@@ -61,7 +61,7 @@
     background-color: #17273a;
 }
 
-.tbl > div:nth-child(1), .tbl > div:nth-child(2), .tbl > div:nth-child(2), .tbl > div:nth-child(22), .tbl > div:nth-child(23), .tbl > div:nth-child(24) {
+.tbl > div:nth-child(2), .tbl > div:nth-child(3), .tbl > div:nth-child(4), .tbl > div:nth-child(23), .tbl > div:nth-child(24), .tbl > div:nth-child(25) {
     display: none;
 }
 
@@ -124,10 +124,10 @@
 }
 .line-chart {
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     left: 5px;
     z-index: 2;
-    width: 635px !important;
+    width: 600px !important;
     margin: 0 !important;
     background-color: transparent !important;
 }
