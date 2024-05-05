@@ -24,7 +24,8 @@
     position: absolute;
     width: 100%;
     text-align: center;
-    top: 75px;
+    top: 95px;
+    margin: 0;
 }
 
 .tbl > p span:nth-child(1) {
@@ -68,7 +69,13 @@
 .tbl > div.act::before {
     content: 'Now';
     position: absolute;
-    top: -20px;
+    top: 50%;
+    background-color: #fcc739;
+    border-radius: 10px;
+    padding: 0 4px 2px;
+    font-size: 10px;
+    z-index: 1;
+    line-height: 16px;
 }
 
 .tbl > div.act::after {
