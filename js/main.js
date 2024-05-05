@@ -368,6 +368,18 @@ function getdayofweek(num) {
   return days[num];
 }
 function changeinfo(elm) {
+  var pr = jQuery(elm).closest('.slick-slide');
+  var sid = pr.attr('data-slick-index') + 1;
   var obj = jQuery(elm).data('main').split(',');
-  console.log(obj);
+  pr.find('.tbl > div').removeClass('act');
+  jQuery(elm).addClass('act');
+  jQuery('header .wrap .slick-slide:nth-child('+sid+')').find('h2 span').text(obj[0]);
+  pr.find('.sec1 .gap1 img').attr('src', obj[1]);
+  pr.find('.sec1 .gap2 big').text(obj[2]);
+  pr.find('.sec1 .gap3').html(jQuery(elm).find('.wind').html());
+  pr.find('.sec1 .gap4 strong').text(obj[5]);
+  pr.find('.sec1 .gap4 span').text(obj[6]);
+  pr.find('.sec2 .gap1 h4 big').text(obj[7]);
+  pr.find('.sec2 .gap2').html(jQuery(elm).find('.sts').html());
+  //console.log(obj);
 }
