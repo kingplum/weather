@@ -83,7 +83,7 @@
     height: 100%;
     position: absolute;
     width: 1px;
-    background-color: #fff;
+    background-color: rgb(255 255 255 / 50%);
     top: 0;
     margin-left: 15px;
 }

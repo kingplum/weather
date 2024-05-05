@@ -274,6 +274,9 @@ jQuery(document).ready(function(){
                 },
                 point: {
                     backgroundColor: 'white'
+                },
+                tooltips: {
+                  enabled: false
                 }
               }
             });
