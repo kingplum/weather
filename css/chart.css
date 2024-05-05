@@ -57,13 +57,13 @@
     min-width: 30px;
 }
 
-.tbl > div:nth-child(6), .tbl > div:nth-child(7), .tbl > div:nth-child(8), .tbl > div:nth-child(9), .tbl > div:nth-child(10), .tbl > div:nth-child(11), .tbl > div:nth-child(12), .tbl > div:nth-child(13), .tbl > div:nth-child(14), .tbl > div:nth-child(15), .tbl > div:nth-child(16), .tbl > div:nth-child(17), .tbl > div:nth-child(18) {
+.tbl > div:nth-child(5), .tbl > div:nth-child(6), .tbl > div:nth-child(7), .tbl > div:nth-child(8), .tbl > div:nth-child(9), .tbl > div:nth-child(10), .tbl > div:nth-child(11), .tbl > div:nth-child(12), .tbl > div:nth-child(13), .tbl > div:nth-child(14), .tbl > div:nth-child(15), .tbl > div:nth-child(16) {
     background-color: #17273a;
 }
 
-.tbl > div:nth-child(2), .tbl > div:nth-child(3), .tbl > div:nth-child(4), .tbl > div:nth-child(23), .tbl > div:nth-child(24), .tbl > div:nth-child(25) {
+/* .tbl > div:nth-child(2), .tbl > div:nth-child(3), .tbl > div:nth-child(4), .tbl > div:nth-child(23), .tbl > div:nth-child(24), .tbl > div:nth-child(25) {
     display: none;
-}
+} */
 
 .tbl > div.act::before {
     content: 'Now';
@@ -125,9 +125,9 @@
 .line-chart {
     position: absolute;
     bottom: 0;
-    left: 5px;
+    left: 0;
     z-index: 2;
-    width: 600px !important;
+    width: 620px !important;
     margin: 0 !important;
     background-color: transparent !important;
 }
