@@ -24,16 +24,17 @@
     position: absolute;
     width: 100%;
     text-align: center;
-    top: 95px;
+    top: 100px;
     margin: 0;
+    font-size: 12px;
 }
 
 .tbl > p span:nth-child(1) {
-    color: #03f8f0;
+    color: #7fffd4;
 }
 
 .tbl > p span:nth-child(3) {
-    color: #fcc739;
+    color: #ffa500;
 }
 
 /* .slick-slide.slick-current .tbl {
@@ -106,19 +107,19 @@
     display: block;
     width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: 20;
 }
 .tbl > div > div:nth-child(3) span.lv2 {
-    bottom: 20%;
-}
-.tbl > div > div:nth-child(3) span.lv3 {
     bottom: 30%;
 }
-.tbl > div > div:nth-child(3) span.lv4 {
+.tbl > div > div:nth-child(3) span.lv3 {
     bottom: 40%;
 }
-.tbl > div > div:nth-child(3) span.lv5 {
+.tbl > div > div:nth-child(3) span.lv4 {
     bottom: 50%;
+}
+.tbl > div > div:nth-child(3) span.lv5 {
+    bottom: 60%;
 }
 .tbl > div > div:nth-child(3) span.lv4 i, .tbl > div > div:nth-child(3) span.lv5 i {
     font-size: 130%;
