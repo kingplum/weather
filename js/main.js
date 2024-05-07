@@ -95,15 +95,15 @@ jQuery(document).ready(function($){
 
               var sls = '', tls = '';
 
-              if(swind >= 0 && swind <= 2) {
+              if(swind >= 0 && swind < 3) {
                 sls = 'lv1';
-              } else if (swind >= 2 && swind <= 5) {
+              } else if (swind >= 3 && swind < 6) {
                 sls = 'lv2';
-              } else if (swind >= 5 && swind <= 8) {
+              } else if (swind >= 6 && swind < 9) {
                 sls = 'lv3';
-              } else if (swind >= 8 && swind <= 11) {
+              } else if (swind >= 9 && swind < 12) {
                 sls = 'lv4';
-              } else if (swind > 11) {
+              } else if (swind >= 12) {
                 sls = 'lv5';
               } else {
                 sls = 'lv0';
