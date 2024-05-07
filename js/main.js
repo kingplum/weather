@@ -107,7 +107,7 @@ jQuery(document).ready(function($){
                 sls = 'lv5';
               }
 
-              if(temp > 10) {
+              if(swind > 10) {
                 tls = 'style="color: red;"';
               }
 
@@ -175,15 +175,15 @@ jQuery(document).ready(function($){
 
                 a1 = angleToDirection(s13);
                 ico1 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-                ts1 = '<p>'+s11+'m '+s12+'s <span class="direction">'+a1+'</span>'+ico1+'</p>';
+                ts1 = '<p><span>'+s11+'m '+s12+'s</span> <span class="direction">'+a1+'</span>'+ico1+'</p>';
 
                 a2 = angleToDirection(s23);
                 ico2 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-                ts2 = '<p>'+s21+'m '+s22+'s <span class="direction">'+a2+'</span>'+ico2+'</p>';
+                ts2 = '<p><span>'+s21+'m '+s22+'s</span> <span class="direction">'+a2+'</span>'+ico2+'</p>';
 
                 a3 = angleToDirection(s33);
                 ico3 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-                ts3 = '<p>'+s31+'m '+s32+'s <span class="direction">'+a3+'</span>'+ico3+'</p>';
+                ts3 = '<p><span>'+s31+'m '+s32+'s</span> <span class="direction">'+a3+'</span>'+ico3+'</p>';
 
               } else {
                 cls = '';
@@ -193,22 +193,22 @@ jQuery(document).ready(function($){
 
               sa1 = angleToDirection(ss13);
               sico1 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-              sts1 = '<p>'+ss11+'m '+ss12+'s <span class="direction">'+sa1+'</span>'+sico1+'</p>';
+              sts1 = '<p><span>'+ss11+'m '+ss12+'s</span> <span class="direction">'+sa1+'</span>'+sico1+'</p>';
 
               sa2 = angleToDirection(ss23);
               sico2 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-              sts2 = '<p>'+ss21+'m '+ss22+'s <span class="direction">'+sa2+'</span>'+sico2+'</p>';
+              sts2 = '<p><span>'+ss21+'m '+ss22+'s</span> <span class="direction">'+sa2+'</span>'+sico2+'</p>';
 
               sa3 = angleToDirection(ss33);
               sico3 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-              sts3 = '<p>'+ss31+'m '+ss32+'s <span class="direction">'+sa3+'</span>'+sico3+'</p>';
+              sts3 = '<p><span>'+ss31+'m '+ss32+'s</span> <span class="direction">'+sa3+'</span>'+sico3+'</p>';
 
               if($.inArray(id, [0,1,2,21,22,23]) === -1) {
-                cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'" onClick="changeinfo(this);" data-main="'+fmAMPM(id)+', '+img+','+temp+','+swind+',,'+txt1+','+txt2+','+txt3+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp" '+tls+'>'+temp+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> <div class="sts" style="display: none;">'+sts1+sts2+sts3+'</div> </div>';
+                cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'" onClick="changeinfo(this);" data-main="'+fmAMPM(id)+', '+img+','+temp+','+swind+',,'+txt1+','+txt2+','+txt3+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp" '+tls+'>'+swind+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> <div class="sts" style="display: none;">'+sts1+sts2+sts3+'</div> </div>';
               }
             });
             $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'('+getdayofweek(day)+')<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
-            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap1"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item gap2"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> <p><span>オン</span>/<span>サイド</span>/<span>オフ</span></p> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
+            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' <p><span>オフ</span>/<span>サイド</span>/<span>オン</span></p> </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap1"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item gap2"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
             
             var ctx = document.getElementById('charts-'+d).getContext('2d'),
             gradient = ctx.createLinearGradient(255, 255, 255, 1);
@@ -375,11 +375,12 @@ function changeinfo(elm) {
   jQuery(elm).addClass('act');
   jQuery('header .wrap .slick-slide:nth-child('+sid+')').find('h2 span').text(obj[0]);
   pr.find('.sec1 .gap1 img').attr('src', obj[1]);
-  pr.find('.sec1 .gap2 big').text(obj[2]);
-  pr.find('.sec1 .gap3').html(jQuery(elm).find('.wind').html());
+  pr.find('.sec1 .gap1 div span').text(obj[2]);
+  pr.find('.sec1 .gap2 big').text(obj[3]);
+  pr.find('.sec1 .gap3').html(jQuery(elm).find('.wind').html() + '<p><span>オフ</span>/<span>サイド</span>/<span>オン</span></p>');
   pr.find('.sec1 .gap4 strong').text(obj[5]);
   pr.find('.sec1 .gap4 span').text(obj[6]);
   pr.find('.sec2 .gap1 h4 big').text(obj[7]);
   pr.find('.sec2 .gap2').html(jQuery(elm).find('.sts').html());
-  //console.log(obj);
+  console.log(obj);
 }

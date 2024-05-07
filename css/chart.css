@@ -29,13 +29,13 @@
     font-size: 12px;
 }
 
-.tbl > p span:nth-child(1) {
+/* .tbl > p span:nth-child(1) {
     color: #7fffd4;
 }
 
 .tbl > p span:nth-child(3) {
     color: #ffa500;
-}
+} */
 
 /* .slick-slide.slick-current .tbl {
     position: static;
@@ -107,19 +107,19 @@
     display: block;
     width: 100%;
     position: absolute;
-    bottom: 20;
+    bottom: 5%;
 }
 .tbl > div > div:nth-child(3) span.lv2 {
-    bottom: 30%;
+    bottom: 15%;
 }
 .tbl > div > div:nth-child(3) span.lv3 {
-    bottom: 40%;
+    bottom: 25%;
 }
 .tbl > div > div:nth-child(3) span.lv4 {
-    bottom: 50%;
+    bottom: 35%;
 }
 .tbl > div > div:nth-child(3) span.lv5 {
-    bottom: 60%;
+    bottom: 45%;
 }
 .tbl > div > div:nth-child(3) span.lv4 i, .tbl > div > div:nth-child(3) span.lv5 i {
     font-size: 130%;

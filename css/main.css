@@ -27,7 +27,7 @@ main .wrap {
     padding: 10px;
     height: 90px;
 }
-.sec1 > div *:not(big) {
+.sec1 > div *:not(big,p) {
     display: block;
 }
 .gap1 > div {
@@ -42,10 +42,29 @@ main .wrap {
 
 .sec1 strong {
     font-size: 25px;
+    text-align: center;
 }
 
 .sec1 strong big {
     font-size: 150%;
+}
+
+.sec1 > div.gap3 {
+    text-align: center;
+}
+
+.sec1 > div.gap3 p {
+    margin: 0;
+    display: flex;
+    font-size: 12px;
+}
+
+.sec1 > div.gap3 p span:nth-child(1) {
+    color: #7fffd4;
+}
+
+.sec1 > div.gap3 p span:nth-child(3) {
+    color: #ffa500;
 }
 
 .sec2 {
@@ -67,12 +86,21 @@ main .wrap {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     margin: 0;
     gap: 5px;
 }
 .sec2 .item p:nth-of-type(2) {
     margin: 10px 0;
+}
+.sec2 .item p span:nth-child(1) {
+    width: 80px;
+    text-align: center;
+    color: #fff;
+}
+.sec2 .item p span:nth-child(2) {
+    width: 60px;
+    text-align: center;
 }
 .img-direction {
     width: 20px;
