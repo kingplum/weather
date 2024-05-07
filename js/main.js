@@ -97,14 +97,16 @@ jQuery(document).ready(function($){
 
               if(swind >= 0 && swind <= 2) {
                 sls = 'lv1';
-              } else if (swind >= 3 && swind <= 5) {
+              } else if (swind >= 2 && swind <= 5) {
                 sls = 'lv2';
-              } else if (swind >= 6 && swind <= 8) {
+              } else if (swind >= 5 && swind <= 8) {
                 sls = 'lv3';
-              } else if (swind >= 9 && swind <= 11) {
+              } else if (swind >= 8 && swind <= 11) {
                 sls = 'lv4';
-              } else {
+              } else if (swind > 11) {
                 sls = 'lv5';
+              } else {
+                sls = 'lv0';
               }
 
               if(swind > 10) {
