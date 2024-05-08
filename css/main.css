@@ -54,7 +54,7 @@ main .wrap {
 }
 
 .sec1 > div.gap3 p {
-    margin: 0;
+    margin: 15px 0 0;
     display: flex;
     font-size: 12px;
 }

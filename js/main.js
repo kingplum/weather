@@ -206,7 +206,7 @@ jQuery(document).ready(function($){
               sts3 = '<p><span>'+ss31+'m '+ss32+'s</span> <span class="direction">'+sa3+'</span>'+sico3+'</p>';
 
               if($.inArray(id, [0,1,2,21,22,23]) === -1) {
-                cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'" onClick="changeinfo(this);" data-main="'+fmAMPM(id)+', '+img+','+temp+','+swind+',,'+txt1+','+txt2+','+txt3+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp" '+tls+'>'+swind+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> <div class="sts" style="display: none;">'+sts1+sts2+sts3+'</div> </div>';
+                cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'" onClick="changeinfo(this);" onmouseover="changeinfo(this);" data-main="'+fmAMPM(id)+', '+img+','+temp+','+swind+',,'+txt1+','+txt2+','+txt3+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp" '+tls+'>'+swind+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> <div class="sts" style="display: none;">'+sts1+sts2+sts3+'</div> </div>';
               }
             });
             $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'('+getdayofweek(day)+')<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
@@ -384,5 +384,5 @@ function changeinfo(elm) {
   pr.find('.sec1 .gap4 span').text(obj[6]);
   pr.find('.sec2 .gap1 h4 big').text(obj[7]);
   pr.find('.sec2 .gap2').html(jQuery(elm).find('.sts').html());
-  console.log(obj);
+  //console.log(obj);
 }
