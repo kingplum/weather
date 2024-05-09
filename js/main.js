@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
         });
         $.each(weathers, function(index, value) {
           // if(index == 0) {
-            //console.log(value);
+            // console.log(value);
             var dt = new Date();
             var cda = dt.getDate(); 
             var h = dt.getHours();
@@ -72,7 +72,7 @@ jQuery(document).ready(function($){
               if(c == 24) asurt = [];
             });
             $.each(items, function(id, vl){
-              //console.log(vl);
+              // console.log(vl);
               if(vl[3] != null) {
                 var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
               } else {
