@@ -1,7 +1,7 @@
 // main js
 jQuery(document).ready(function($){
-    //var file = 'https://surfline.mjof.xyz/584204204e65fad6a77096d4.csv';
-    var file = '//surfline.mjof.xyz/584204204e65fad6a7709985.csv';
+    var file = 'https://surfline.mjof.xyz/584204204e65fad6a77096d4.csv';
+    // var file = '//surfline.mjof.xyz/584204204e65fad6a7709985.csv';
     var cdat;
     $.get(file, function(csv) {
         var data = $.csv.toArrays(csv, {
