@@ -1,7 +1,6 @@
 // main js
 jQuery(document).ready(function($){
-    var file = 'https://surfline.mjof.xyz/584204204e65fad6a77096d4.csv';
-    // var file = '//surfline.mjof.xyz/584204204e65fad6a7709985.csv';
+    var file = 'https://surfline.mjof.xyz/584204204e65fad6a7709985.csv';
     var cdat;
     $.get(file, function(csv) {
         var data = $.csv.toArrays(csv, {
@@ -73,7 +72,7 @@ jQuery(document).ready(function($){
               if(c == 24) asurt = [];
             });
             $.each(items, function(id, vl){
-              // console.log(vl);
+              console.log(vl);
               if(vl[3] != null) {
                 var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
               } else {
