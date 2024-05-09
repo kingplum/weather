@@ -3,3 +3,61 @@
 /* Table */
 
 /* SP */
+@media only screen and (max-width: 414px) { 
+.sec2 {
+    height: unset;
+}
+.sec2 .item {
+    flex-basis: unset;
+}
+.sec1 strong {
+    font-size: 20px;
+}
+.sec2 .item h4 {
+    font-size: 25px;
+}
+.gap2 span, .gap4 span {
+    font-size: 15px;
+}
+.sec1 {
+    height: unset;
+}
+.slick-dots li {
+    width: 15px;
+    height: 15px;
+}
+
+}
+
+@media only screen and (max-width: 320px) { 
+	header .wrap .slick-slide p {
+	    display: flex !important;
+	    flex-direction: column;
+	    align-items: center;
+	    justify-content: center;
+	    font-size: 15px;
+	}
+	header .wrap .wrap-weather h2 {
+	    font-size: 15px;
+	}
+	.sec1 {
+	    padding: 5px;
+	}
+	.sec1 strong {
+	    font-size: 15px;
+	}
+	.gap1 div img {
+	    width: 30px;
+	}
+	.sec2 .item h4 {
+        font-size: 15px;
+    }
+    .gap2 span, .gap4 span {
+        font-size: 12px;
+    }
+    .gap3 i {
+	    font-size: 30px;
+	}
+
+
+}
