@@ -301,9 +301,9 @@ jQuery(document).ready(function($){
                     line: {
                         tension: 0.5
                     },
-                    point:{
-                      radius: 0
-                    }
+                    // point:{
+                    //   radius: 0
+                    // }
                 },
                 legend: {
                     display: false
