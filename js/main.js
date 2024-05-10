@@ -158,11 +158,11 @@ jQuery(document).ready(function($){
                   default:
                     ctype = 'サイド';
                 }
-                if(d == cda) {
-                  cls = 'act';
-                } else {
-                  cls = '';
-                }
+                // if(d == cda) {
+                cls = 'act';
+                // } else {
+                //   cls = '';
+                // }
 
                 var vswell = vl[12].split(',');
                 var s11 = parseFloat(vswell[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
