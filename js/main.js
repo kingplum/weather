@@ -1,5 +1,6 @@
 // main js
 jQuery(document).ready(function($){
+    // var file = 'https://surfline.mjof.xyz/584204204e65fad6a77096d4.csv';
     var file = './data/file.csv';
     var cdat;
     $.get(file, function(csv) {
