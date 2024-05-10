@@ -1,6 +1,6 @@
 // main js
 jQuery(document).ready(function($){
-    var file = 'https://surfline.mjof.xyz/584204204e65fad6a7709985.csv';
+    var file = './file.csv';
     var cdat;
     $.get(file, function(csv) {
         var data = $.csv.toArrays(csv, {
