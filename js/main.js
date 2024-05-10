@@ -1,6 +1,6 @@
 // main js
 jQuery(document).ready(function($){
-    var file = './file.csv';
+    var file = './data/file.csv';
     var cdat;
     $.get(file, function(csv) {
         var data = $.csv.toArrays(csv, {
