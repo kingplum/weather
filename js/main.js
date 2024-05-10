@@ -213,6 +213,8 @@ jQuery(document).ready(function($){
             $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'('+getdayofweek(day)+')<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
             $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' <p><span>オフ</span>/<span>サイド</span>/<span>オン</span></p> </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap1"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item gap2"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
             
+            var mxline = Math.max.apply(Math, line);
+            var miline = Math.min.apply(Math, line);
             var ctx = document.getElementById('charts-'+d).getContext('2d'),
             gradient = ctx.createLinearGradient(255, 255, 255, 1);
             gradient.addColorStop(1, 'rgba(157, 126, 5, 1)');
@@ -260,7 +262,9 @@ jQuery(document).ready(function($){
                           var x = view.x - (textWidth / 2);
                           var y = view.y - 10;
                           ctx.save();
-                          ctx.fillText(text + 'm', x, y);
+                          if(text == miline || text == mxline) {
+                            ctx.fillText(text + 'm', x, y);
+                          }
                           ctx.restore();
                         }
                       }
@@ -290,7 +294,10 @@ jQuery(document).ready(function($){
                 elements: {
                     line: {
                         tension: 0.5
-                    }
+                    },
+                    // point:{
+                    //   radius: 0
+                    // }
                 },
                 legend: {
                     display: false
@@ -322,7 +329,30 @@ jQuery(document).ready(function($){
           draggable: false,
           accessibility: false
         });
-        $('.slider-nav').slick({
+        $('.slider-nav').on('afterChange init', function(event, slick, direction){
+            console.log('afterChange/init', event, slick, slick.$slides);
+            // remove all prev/next
+            slick.$slides.removeClass('prevdiv').removeClass('nextdiv');
+        
+            // find current slide
+            for (var i = 0; i < slick.$slides.length; i++)
+            {
+                var $slide = $(slick.$slides[i]);
+                if ($slide.hasClass('slick-current')) {
+                    // update DOM siblings
+                    $slide.prev().addClass('prevdiv');
+                    $slide.next().addClass('nextdiv');
+                    break;
+                }
+            }
+          }
+        )
+        .on('beforeChange', function(event, slick) {
+            // optional, but cleaner maybe
+            // remove all prev/next
+            slick.$slides.removeClass('prevdiv').removeClass('nextdiv');
+        })
+        .slick({
           slidesToShow: 1,
           slidesToScroll: 1,
           asNavFor: '.slider-for',

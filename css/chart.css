@@ -59,7 +59,7 @@
     min-width: 30px;
 }
 
-.tbl > div:nth-child(5), .tbl > div:nth-child(6), .tbl > div:nth-child(7), .tbl > div:nth-child(8), .tbl > div:nth-child(9), .tbl > div:nth-child(10), .tbl > div:nth-child(11), .tbl > div:nth-child(12), .tbl > div:nth-child(13), .tbl > div:nth-child(14), .tbl > div:nth-child(15), .tbl > div:nth-child(16) {
+.tbl > div:nth-child(4), .tbl > div:nth-child(5), .tbl > div:nth-child(6), .tbl > div:nth-child(7), .tbl > div:nth-child(8), .tbl > div:nth-child(9), .tbl > div:nth-child(10), .tbl > div:nth-child(11), .tbl > div:nth-child(12), .tbl > div:nth-child(13), .tbl > div:nth-child(14), .tbl > div:nth-child(15) {
     background-color: #17273a;
 }
 
