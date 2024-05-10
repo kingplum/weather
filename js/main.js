@@ -385,11 +385,11 @@ function getdayofweek(num) {
 }
 function changeinfo(elm) {
   var pr = jQuery(elm).closest('.slick-slide');
-  var sid = pr.attr('data-slick-index') + 1;
+  var sid = pr.attr('data-slick-index');
   var obj = jQuery(elm).data('main').split(',');
   pr.find('.tbl > div').removeClass('act');
   jQuery(elm).addClass('act');
-  jQuery('header .wrap .slick-slide:nth-child('+sid+')').find('h2 span').text(obj[0]);
+  jQuery('.slider-nav .slick-slide[data-slick-index="'+sid+'"]').find('h2 span').text(obj[0]);
   pr.find('.sec1 .gap1 img').attr('src', obj[1]);
   pr.find('.sec1 .gap1 div span').text(obj[2]);
   pr.find('.sec1 .gap2 big').text(obj[3]);
