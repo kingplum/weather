@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
           }          
         });
         $.each(weathers, function(index, value) {
-          // if(index == 0) {
+          if(index == 0) {
             // console.log(value);
             var dt = new Date();
             var cda = dt.getDate(); 
@@ -55,25 +55,24 @@ jQuery(document).ready(function($){
             var sm = new Date(items[10][5]).getMinutes();
             sm = sm < 10 ? '0' + sm : sm;
             var asurt = [];
-            var c = 0;
+            //var c = 0;
             var ss = '';
             var msurt = 0;
             var line = [];
             var cwicon, ctemp, csurt, cdirec, cwind, cvsurt, misurt, masurt, cls;
             if(cda == d) cdat = index;
-            $.each(items, function(id, vl){
-              c++;
+            $.each(items, function(id, vl){              
               var vsurt = vl[11].split(',');
               var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
               asurt.push(surt);
               msurt = Math.max(...asurt);
-              if($.inArray(c, [3, 6, 9, 12, 15, 18, 20]) !== -1) {
+              if($.inArray(id, [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]) !== -1) {
                 line.push(vl[14]);
               }
               if(c == 24) asurt = [];
             });
             $.each(items, function(id, vl){
-              //console.log(vl);
+              console.log(vl);
               if(vl[3] != null) {
                 var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
               } else {
@@ -221,7 +220,7 @@ jQuery(document).ready(function($){
             gradient.addColorStop(0.5, 'rgba(157, 126, 5, 0)');
             gradient.addColorStop(0, 'rgba(157, 126, 5, 0)');
             var data  = {
-                labels: ['3', '6', '9', '12', '15', '18', '20'],
+                labels: ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
                 datasets: [{
                         label: '',
                         backgroundColor: gradient,
@@ -240,8 +239,8 @@ jQuery(document).ready(function($){
                 layout: {
                   padding: {
                     top: 20,
-                    left: 5,
-                    right: 25
+                    left: 4,
+                    right: 20
                   }
                 },
                 animation: {
@@ -252,6 +251,8 @@ jQuery(document).ready(function($){
                       var ctx = this.chart.ctx;
                       var scales = this.chart.scales;
                       var datasets = this.chart.config.data.datasets;
+                      var checkmx = 0;
+                      var checkmn = 0;
                       for(var i = 0; i< datasets.length; i++){
                         var meta = this.chart.getDatasetMeta(i);
                         var elements = meta.data;
@@ -262,8 +263,13 @@ jQuery(document).ready(function($){
                           var x = view.x - (textWidth / 2);
                           var y = view.y - 10;
                           ctx.save();
-                          if(text == miline || text == mxline) {
+                          if(text == mxline && checkmx == 0) {
                             ctx.fillText(text + 'm', x, y);
+                            checkmx = 1;
+                          }
+                          if(text == miline && checkmn == 0) {
+                            ctx.fillText(text + 'm', x, y);
+                            checkmn = 1;
                           }
                           ctx.restore();
                         }
@@ -295,9 +301,9 @@ jQuery(document).ready(function($){
                     line: {
                         tension: 0.5
                     },
-                    // point:{
-                    //   radius: 0
-                    // }
+                    point:{
+                      radius: 0
+                    }
                 },
                 legend: {
                     display: false
@@ -311,7 +317,7 @@ jQuery(document).ready(function($){
               }
             });
             line = [];
-          // }
+          }
         });
     });
     $(window).load(function(){
@@ -329,30 +335,7 @@ jQuery(document).ready(function($){
           draggable: false,
           accessibility: false
         });
-        $('.slider-nav').on('afterChange init', function(event, slick, direction){
-            console.log('afterChange/init', event, slick, slick.$slides);
-            // remove all prev/next
-            slick.$slides.removeClass('prevdiv').removeClass('nextdiv');
-        
-            // find current slide
-            for (var i = 0; i < slick.$slides.length; i++)
-            {
-                var $slide = $(slick.$slides[i]);
-                if ($slide.hasClass('slick-current')) {
-                    // update DOM siblings
-                    $slide.prev().addClass('prevdiv');
-                    $slide.next().addClass('nextdiv');
-                    break;
-                }
-            }
-          }
-        )
-        .on('beforeChange', function(event, slick) {
-            // optional, but cleaner maybe
-            // remove all prev/next
-            slick.$slides.removeClass('prevdiv').removeClass('nextdiv');
-        })
-        .slick({
+        $('.slider-nav').slick({
           slidesToShow: 1,
           slidesToScroll: 1,
           asNavFor: '.slider-for',
