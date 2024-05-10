@@ -27,7 +27,7 @@ jQuery(document).ready(function($){
           }          
         });
         $.each(weathers, function(index, value) {
-          if(index == 0) {
+          // if(index == 0) {
             // console.log(value);
             var dt = new Date();
             var cda = dt.getDate(); 
@@ -317,7 +317,7 @@ jQuery(document).ready(function($){
               }
             });
             line = [];
-          }
+          // }
         });
     });
     $(window).load(function(){
