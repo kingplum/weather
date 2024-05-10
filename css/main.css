@@ -142,12 +142,12 @@ main .wrap {
     flex-direction: row-reverse;
 }
 .slider-nav .slick-next:before  {
-    content: '今日';
+    content: '翌日';
     width: 70px;
     font-size: 18px;
 }
 .slider-nav .slick-prev:before  {
-    content: '明日';
+    content: '昨日';
     width: 70px;
     font-size: 18px;
 }
