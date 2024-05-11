@@ -72,7 +72,7 @@ jQuery(document).ready(function($){
               if(c == 24) asurt = [];
             });
             $.each(items, function(id, vl){
-              console.log(vl);
+              // console.log(vl);
               if(vl[3] != null) {
                 var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
               } else {
@@ -83,10 +83,10 @@ jQuery(document).ready(function($){
               var swind = Math.round(vl[7] / 3.6 * 10) /10;
 
               if (vl[9] == "Offshore" ){
-                var onoff = ' color:#7fffd4';
+                var onoff = ' color:#ffa500';
                 var txt2 = 'オンショア';
               } else if (vl[9] == "Onshore" ){
-                var onoff = ' color:#ffa500';
+                var onoff = ' color:#7fffd4';
                 var txt2 = 'オフショア';
               } else {
                 var onoff = ' color:#fff';
@@ -398,5 +398,5 @@ function changeinfo(elm) {
   pr.find('.sec1 .gap4 span').text(obj[6]);
   pr.find('.sec2 .gap1 h4 big').text(obj[7]);
   pr.find('.sec2 .gap2').html(jQuery(elm).find('.sts').html());
-  //console.log(obj);
+  // console.log(obj);
 }
