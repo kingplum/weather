@@ -357,6 +357,10 @@ jQuery(document).ready(function($){
         $('body').removeClass('loading');
         $('.overlay').hide();
       }, 3000);
+      $('.slider-nav').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        $(this).removeClass('point-'+currentSlide);
+        $(this).addClass('point-'+nextSlide);
+      });
     });
 });
 

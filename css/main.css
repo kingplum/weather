@@ -146,13 +146,19 @@ main .wrap {
     font-size: 18px;
 }
 .slider-nav .slick-prev:before  {
-    content: '昨日';
+    content: '前日';
     width: 70px;
     font-size: 18px;
 }
 .slick-next:before,
 .slick-prev:before {
     color: #fff;
+}
+.slider-nav > button.slick-disabled + div.slick-list + button.slick-next:before {
+    content: '明日';
+}
+.slider-nav.point-1 .slick-prev:before {
+    content: '今日';
 }
 
 .icon-time img {
