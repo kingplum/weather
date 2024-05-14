@@ -32,291 +32,294 @@ jQuery(document).ready(function($){
             var dt = new Date();
             var cda = dt.getDate(); 
             var h = dt.getHours();
-            var d = value['date'].substring(8,10);
+            var d = parseInt(value['date'].substring(8,10));
             var m = value['date'].substring(5,7);
             var items = value['items'];
             var cols = '';
             var today = new Date(value['date']);
             var day = today.getDay();
-            if(items[0][4] == null) {
-              rh = 4;
-            } else {
-              var rh = new Date(items[0][4]).getHours();
-              rh = rh < 10 ? '0' + rh : rh;
-            }
-            var rm = new Date(items[0][4]).getMinutes();
-            rm = rm < 10 ? '0'+rm : rm;
-            if(items[0][4] == null) {
-              sh = 16;
-            } else {
-              var sh = new Date(items[10][5]).getHours();
-              sh = parseInt(sh, 10) + 12;
-            }
-            var sm = new Date(items[10][5]).getMinutes();
-            sm = sm < 10 ? '0' + sm : sm;
-            var asurt = [];
-            //var c = 0;
-            var ss = '';
-            var msurt = 0;
-            var line = [];
-            var cwicon, ctemp, csurt, cdirec, cwind, cvsurt, misurt, masurt, cls;
-            if(cda == d) cdat = index;
-            $.each(items, function(id, vl){              
-              var vsurt = vl[11].split(',');
-              var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              asurt.push(surt);
-              msurt = Math.max(...asurt);
-              if($.inArray(id, [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]) !== -1) {
-                line.push(vl[14]);
-              }
-              if(c == 24) asurt = [];
-            });
-            $.each(items, function(id, vl){
-              // console.log(vl);
-              if(vl[3] != null) {
-                var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
+            if(d >= cda) {
+              // console.log(cda);
+              // console.log(d);
+              if(items[0][4] == null) {
+                rh = 4;
               } else {
-                var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
+                var rh = new Date(items[0][4]).getHours();
+                rh = rh < 10 ? '0' + rh : rh;
               }
-
-              var temp = Math.round(vl[2] * 10) / 10;
-              var swind = Math.round(vl[7] / 3.6 * 10) /10;
-
-              if (vl[9] == "Offshore" ){
-                var onoff = ' color:#ffa500';
-                var txt2 = 'オンショア';
-              } else if (vl[9] == "Onshore" ){
-                var onoff = ' color:#7fffd4';
-                var txt2 = 'オフショア';
+              var rm = new Date(items[0][4]).getMinutes();
+              rm = rm < 10 ? '0'+rm : rm;
+              if(items[0][4] == null) {
+                sh = 16;
               } else {
-                var onoff = ' color:#fff';
-                var txt2 = 'サイド';
+                var sh = new Date(items[10][5]).getHours();
+                sh = parseInt(sh, 10) + 12;
               }
-
-              var sls = '', tls = '';
-
-              if(swind > 0 && swind < 3) {
-                sls = 'lv1';
-              } else if (swind >= 3 && swind < 6) {
-                sls = 'lv2';
-              } else if (swind >= 6 && swind < 9) {
-                sls = 'lv3';
-              } else if (swind >= 9 && swind < 12) {
-                sls = 'lv4';
-              } else if (swind >= 12) {
-                sls = 'lv5';
-              } else {
-                sls = 'lv0';
-              }
-
-              if(swind > 10) {
-                tls = 'style="color: red;"';
-              }
-
-
-              var wind = '<span style="transform:rotate(-225deg);" class="'+sls+'"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+'"></i></span>';
-
-              var vsurt = vl[11].split(',');
-              var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-
-              var pc = surt * 100 / 1.9;
-              if(surt >= 2.0 && surt <= 2.5) {
-                ss = 'style="height: '+pc+'%;background-color: blue;background-image: linear-gradient(blue, #000);"';
-              } else if (surt >= 2.6) {
-                ss = 'style="height: '+pc+'%;background-color: red;background-image: linear-gradient(red, #000);"';
-              } else {
-                ss = 'style="height: '+pc+'%"';
-              }
-
-              var svswell = vl[12].split(',');
-              var ss11 = parseFloat(svswell[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              var ss12 = parseFloat(svswell[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              var ss13 = parseFloat(svswell[3].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              var ss21 = parseFloat(svswell[4].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              var ss22 = parseFloat(svswell[5].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              var ss23 = parseFloat(svswell[7].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              var ss31 = parseFloat(svswell[8].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              var ss32 = parseFloat(svswell[9].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-              var ss33 = parseFloat(svswell[11].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);   
-
-              if(id == h) {
-                cwicon = img;
-                ctemp = temp;
-                csurt = swind;
-                cdirec = angleToDirection(vl[8]);
-                cwind = '<span style="transform:rotate(-225deg);"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+';"></i></span>';
-                cvsurt = vl[11].split(',');
-                misurt = parseFloat(vsurt[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                masurt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                switch(vl[9]) {
-                  case 'Offshore':
-                    ctype = 'オンショア';
-                    break;
-                  case 'Onshore':
-                    ctype = 'オフショア';
-                    break;
-                  default:
-                    ctype = 'サイド';
+              var sm = new Date(items[10][5]).getMinutes();
+              sm = sm < 10 ? '0' + sm : sm;
+              var asurt = [];
+              var ss = '';
+              var msurt = 0;
+              var line = [];
+              var cwicon, ctemp, csurt, cdirec, cwind, cvsurt, misurt, masurt, cls;
+              if(cda == d) cdat = index;
+              $.each(items, function(id, vl){              
+                var vsurt = vl[11].split(',');
+                var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                asurt.push(surt);
+                msurt = Math.max(...asurt);
+                if($.inArray(id, [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]) !== -1) {
+                  line.push(vl[14]);
                 }
-                // if(d == cda) {
-                cls = 'act';
-                // } else {
-                //   cls = '';
-                // }
+                if(c == 24) asurt = [];
+              });
+              $.each(items, function(id, vl){
+                // console.log(vl);
+                if(vl[3] != null) {
+                  var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
+                } else {
+                  var img = 'https://wa.cdn-surfline.com/quiver/0.21.2/weathericons/'+vl[3]+'.svg';
+                }
 
-                var vswell = vl[12].split(',');
-                var s11 = parseFloat(vswell[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                var s12 = parseFloat(vswell[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                var s13 = parseFloat(vswell[3].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                var s21 = parseFloat(vswell[4].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                var s22 = parseFloat(vswell[5].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                var s23 = parseFloat(vswell[7].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                var s31 = parseFloat(vswell[8].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                var s32 = parseFloat(vswell[9].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
-                var s33 = parseFloat(vswell[11].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var temp = Math.round(vl[2] * 10) / 10;
+                var swind = Math.round(vl[7] / 3.6 * 10) /10;
 
-                a1 = angleToDirection(s13);
-                ico1 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-                ts1 = '<p><span>'+s11+'m '+s12+'s</span> <span class="direction">'+a1+'</span>'+ico1+'</p>';
+                if (vl[9] == "Offshore" ){
+                  var onoff = ' color:#ffa500';
+                  var txt2 = 'オンショア';
+                } else if (vl[9] == "Onshore" ){
+                  var onoff = ' color:#7fffd4';
+                  var txt2 = 'オフショア';
+                } else {
+                  var onoff = ' color:#fff';
+                  var txt2 = 'サイド';
+                }
 
-                a2 = angleToDirection(s23);
-                ico2 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-                ts2 = '<p><span>'+s21+'m '+s22+'s</span> <span class="direction">'+a2+'</span>'+ico2+'</p>';
+                var sls = '', tls = '';
 
-                a3 = angleToDirection(s33);
-                ico3 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-                ts3 = '<p><span>'+s31+'m '+s32+'s</span> <span class="direction">'+a3+'</span>'+ico3+'</p>';
+                if(swind > 0 && swind < 3) {
+                  sls = 'lv1';
+                } else if (swind >= 3 && swind < 6) {
+                  sls = 'lv2';
+                } else if (swind >= 6 && swind < 9) {
+                  sls = 'lv3';
+                } else if (swind >= 9 && swind < 12) {
+                  sls = 'lv4';
+                } else if (swind >= 12) {
+                  sls = 'lv5';
+                } else {
+                  sls = 'lv0';
+                }
 
-              } else {
-                cls = '';
-              }
-              var txt1 = angleToDirection(vl[8]);
-              var txt3 = parseFloat(vsurt[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]) + '-' + parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                if(swind > 10) {
+                  tls = 'style="color: red;"';
+                }
 
-              sa1 = angleToDirection(ss13);
-              sico1 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-              sts1 = '<p><span>'+ss11+'m '+ss12+'s</span> <span class="direction">'+sa1+'</span>'+sico1+'</p>';
 
-              sa2 = angleToDirection(ss23);
-              sico2 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-              sts2 = '<p><span>'+ss21+'m '+ss22+'s</span> <span class="direction">'+sa2+'</span>'+sico2+'</p>';
+                var wind = '<span style="transform:rotate(-225deg);" class="'+sls+'"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+'"></i></span>';
 
-              sa3 = angleToDirection(ss33);
-              sico3 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
-              sts3 = '<p><span>'+ss31+'m '+ss32+'s</span> <span class="direction">'+sa3+'</span>'+sico3+'</p>';
+                var vsurt = vl[11].split(',');
+                var surt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
 
-              if($.inArray(id, [0,1,2,21,22,23]) === -1) {
-                cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'" onClick="changeinfo(this);" onmouseover="changeinfo(this);" data-main="'+fmAMPM(id)+', '+img+','+temp+','+swind+',,'+txt1+','+txt2+','+txt3+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp" '+tls+'>'+swind+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> <div class="sts" style="display: none;">'+sts1+sts2+sts3+'</div> </div>';
-              }
-            });
-            $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'('+getdayofweek(day)+')<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
-            $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' <p><span>オフ</span>/<span>サイド</span>/<span>オン</span></p> </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap1"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item gap2"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
-            
-            var mxline = Math.max.apply(Math, line);
-            var miline = Math.min.apply(Math, line);
-            var ctx = document.getElementById('charts-'+d).getContext('2d'),
-            gradient = ctx.createLinearGradient(255, 255, 255, 1);
-            gradient.addColorStop(1, 'rgba(157, 126, 5, 1)');
-            gradient.addColorStop(0.5, 'rgba(157, 126, 5, 0)');
-            gradient.addColorStop(0, 'rgba(157, 126, 5, 0)');
-            var data  = {
-                labels: ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
-                datasets: [{
-                        label: '',
-                        backgroundColor: gradient,
-                        pointBackgroundColor: 'white',
-                        borderWidth: 1,
-                        borderColor: '#efef00',
-                        data: line
-                }]
-            };
-            var chartInstance = new Chart(ctx, {
-              type: 'line',
-              data: data,
-              options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                layout: {
-                  padding: {
-                    top: 20,
-                    left: 4,
-                    right: 20
+                var pc = surt * 100 / 1.9;
+                if(surt >= 2.0 && surt <= 2.5) {
+                  ss = 'style="height: '+pc+'%;background-color: blue;background-image: linear-gradient(blue, #000);"';
+                } else if (surt >= 2.6) {
+                  ss = 'style="height: '+pc+'%;background-color: red;background-image: linear-gradient(red, #000);"';
+                } else {
+                  ss = 'style="height: '+pc+'%"';
+                }
+
+                var svswell = vl[12].split(',');
+                var ss11 = parseFloat(svswell[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var ss12 = parseFloat(svswell[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var ss13 = parseFloat(svswell[3].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var ss21 = parseFloat(svswell[4].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var ss22 = parseFloat(svswell[5].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var ss23 = parseFloat(svswell[7].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var ss31 = parseFloat(svswell[8].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var ss32 = parseFloat(svswell[9].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                var ss33 = parseFloat(svswell[11].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);   
+
+                if(id == h) {
+                  cwicon = img;
+                  ctemp = temp;
+                  csurt = swind;
+                  cdirec = angleToDirection(vl[8]);
+                  cwind = '<span style="transform:rotate(-225deg);"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(vl[8])+'deg);'+onoff+';"></i></span>';
+                  cvsurt = vl[11].split(',');
+                  misurt = parseFloat(vsurt[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  masurt = parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  switch(vl[9]) {
+                    case 'Offshore':
+                      ctype = 'オンショア';
+                      break;
+                    case 'Onshore':
+                      ctype = 'オフショア';
+                      break;
+                    default:
+                      ctype = 'サイド';
                   }
-                },
-                animation: {
-                    easing: 'easeInOutQuad',
-                    duration: 450,
-                    onComplete: function(animation) {
-                      var configOptions = this.chart.config.options;
-                      var ctx = this.chart.ctx;
-                      var scales = this.chart.scales;
-                      var datasets = this.chart.config.data.datasets;
-                      var checkmx = 0;
-                      var checkmn = 0;
-                      for(var i = 0; i< datasets.length; i++){
-                        var meta = this.chart.getDatasetMeta(i);
-                        var elements = meta.data;
-                        for (var j = 0; j < elements.length; j++) {
-                          var view = elements[j]._view;                  
-                          var text = configOptions.barGoals ? datasets[i].rawData[j] : datasets[i].data[j];
-                          var textWidth = ctx.measureText(text).width;
-                          var x = view.x - (textWidth / 2);
-                          var y = view.y - 10;
-                          ctx.save();
-                          if(text == mxline && checkmx == 0) {
-                            ctx.fillText(text + 'm', x, y);
-                            checkmx = 1;
+                  // if(d == cda) {
+                  cls = 'act';
+                  // } else {
+                  //   cls = '';
+                  // }
+
+                  var vswell = vl[12].split(',');
+                  var s11 = parseFloat(vswell[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  var s12 = parseFloat(vswell[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  var s13 = parseFloat(vswell[3].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  var s21 = parseFloat(vswell[4].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  var s22 = parseFloat(vswell[5].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  var s23 = parseFloat(vswell[7].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  var s31 = parseFloat(vswell[8].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  var s32 = parseFloat(vswell[9].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+                  var s33 = parseFloat(vswell[11].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+
+                  a1 = angleToDirection(s13);
+                  ico1 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                  ts1 = '<p><span>'+s11+'m '+s12+'s</span> <span class="direction">'+a1+'</span>'+ico1+'</p>';
+
+                  a2 = angleToDirection(s23);
+                  ico2 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                  ts2 = '<p><span>'+s21+'m '+s22+'s</span> <span class="direction">'+a2+'</span>'+ico2+'</p>';
+
+                  a3 = angleToDirection(s33);
+                  ico3 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                  ts3 = '<p><span>'+s31+'m '+s32+'s</span> <span class="direction">'+a3+'</span>'+ico3+'</p>';
+
+                } else {
+                  cls = '';
+                }
+                var txt1 = angleToDirection(vl[8]);
+                var txt3 = parseFloat(vsurt[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]) + '-' + parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
+
+                sa1 = angleToDirection(ss13);
+                sico1 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                sts1 = '<p><span>'+ss11+'m '+ss12+'s</span> <span class="direction">'+sa1+'</span>'+sico1+'</p>';
+
+                sa2 = angleToDirection(ss23);
+                sico2 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                sts2 = '<p><span>'+ss21+'m '+ss22+'s</span> <span class="direction">'+sa2+'</span>'+sico2+'</p>';
+
+                sa3 = angleToDirection(ss33);
+                sico3 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                sts3 = '<p><span>'+ss31+'m '+ss32+'s</span> <span class="direction">'+sa3+'</span>'+sico3+'</p>';
+
+                if($.inArray(id, [0,1,2,21,22,23]) === -1) {
+                  cols += '<div id="col-'+d+'-'+id+'" class="'+cls+'" onClick="changeinfo(this);" onmouseover="changeinfo(this);" data-main="'+fmAMPM(id)+', '+img+','+temp+','+swind+',,'+txt1+','+txt2+','+txt3+'"> <div class="wicon"><img src="'+img+'"></div> <div class="temp" '+tls+'>'+swind+'</div> <div class="wind">'+wind+'</div> <div class="time">'+surt+'</div> <div><span class="chart" '+ss+'></span></div> <div class="sts" style="display: none;">'+sts1+sts2+sts3+'</div> </div>';
+                }
+              });
+              $('.slider-nav').append('<div class="wrap-weather"> <h2>'+m+'/'+d+'('+getdayofweek(day)+')<span>'+formatAMPM(new Date)+'</span></h2> <p><span class="sunny icon-time"><img src="images/sunny.png" alt="">日の出'+rh+':'+rm+'</span> <span class="night icon-time"><img src="images/night-mode.png" alt="">日の入り'+sh+':'+sm+'</span></p> </div>');
+              $('.slider-for').append('<div> <div class="sec1 d-flex r-center"> <div class="gap1"> <div> <img src="'+cwicon+'" alt=""> <div><span>'+ctemp+'</span>&deg;C</div> </div> </div> <div  class="gap2"> <span>風向.風速(m/s)</span> <strong><big>'+csurt+'</big> m/s</strong> </div> <div  class="gap3"> '+cwind+' <p><span>オフ</span>/<span>サイド</span>/<span>オン</span></p> </div> <div  class="gap4"> <strong>'+cdirec+'</strong> <span>'+ctype+'</span> </div> </div> <div class="sec2 d-flex r-center"> <div class="item gap1"> <span>波高(m)</span> <h4><big>'+misurt+'-'+masurt+'</big>m</h4> </div> <div class="item gap2"> '+ts1+ts2+ts3+' </div> </div> <div class="sec3"> <div class="d-flex tbl"> '+cols+' <div class="line-chart"> <div class="aspect-ratio"> <canvas id="charts-'+d+'"></canvas> </div> </div> </div> </div> </div>');
+              
+              var mxline = Math.max.apply(Math, line);
+              var miline = Math.min.apply(Math, line);
+              var ctx = document.getElementById('charts-'+d).getContext('2d'),
+              gradient = ctx.createLinearGradient(255, 255, 255, 1);
+              gradient.addColorStop(1, 'rgba(157, 126, 5, 1)');
+              gradient.addColorStop(0.5, 'rgba(157, 126, 5, 0)');
+              gradient.addColorStop(0, 'rgba(157, 126, 5, 0)');
+              var data  = {
+                  labels: ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'],
+                  datasets: [{
+                          label: '',
+                          backgroundColor: gradient,
+                          pointBackgroundColor: 'white',
+                          borderWidth: 1,
+                          borderColor: '#efef00',
+                          data: line
+                  }]
+              };
+              var chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  layout: {
+                    padding: {
+                      top: 20,
+                      left: 4,
+                      right: 20
+                    }
+                  },
+                  animation: {
+                      easing: 'easeInOutQuad',
+                      duration: 450,
+                      onComplete: function(animation) {
+                        var configOptions = this.chart.config.options;
+                        var ctx = this.chart.ctx;
+                        var scales = this.chart.scales;
+                        var datasets = this.chart.config.data.datasets;
+                        var checkmx = 0;
+                        var checkmn = 0;
+                        for(var i = 0; i< datasets.length; i++){
+                          var meta = this.chart.getDatasetMeta(i);
+                          var elements = meta.data;
+                          for (var j = 0; j < elements.length; j++) {
+                            var view = elements[j]._view;                  
+                            var text = configOptions.barGoals ? datasets[i].rawData[j] : datasets[i].data[j];
+                            var textWidth = ctx.measureText(text).width;
+                            var x = view.x - (textWidth / 2);
+                            var y = view.y - 10;
+                            ctx.save();
+                            if(text == mxline && checkmx == 0) {
+                              ctx.fillText(text + 'm', x, y);
+                              checkmx = 1;
+                            }
+                            if(text == miline && checkmn == 0) {
+                              ctx.fillText(text + 'm', x, y);
+                              checkmn = 1;
+                            }
+                            ctx.restore();
                           }
-                          if(text == miline && checkmn == 0) {
-                            ctx.fillText(text + 'm', x, y);
-                            checkmn = 1;
-                          }
-                          ctx.restore();
                         }
                       }
-                    }
-                },
-                scales: {
-                  xAxes: [{
+                  },
+                  scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: 'rgba(200, 200, 200, 0.05)',
+                            lineWidth: 1
+                        },
+                        ticks: {
+                          fontColor: "#fff"
+                        }
+                    }],
+                    yAxes: [{
                       gridLines: {
-                          color: 'rgba(200, 200, 200, 0.05)',
+                          color: 'rgba(200, 200, 200, 0.08)',
                           lineWidth: 1
                       },
                       ticks: {
-                        fontColor: "#fff"
+                        fontColor: "#fff",
+                        display: false
                       }
-                  }],
-                  yAxes: [{
-                    gridLines: {
-                        color: 'rgba(200, 200, 200, 0.08)',
-                        lineWidth: 1
-                    },
-                    ticks: {
-                      fontColor: "#fff",
+                    }]
+                  },
+                  elements: {
+                      line: {
+                          tension: 0.5
+                      },
+                      // point:{
+                      //   radius: 0
+                      // }
+                  },
+                  legend: {
                       display: false
-                    }
-                  }]
-                },
-                elements: {
-                    line: {
-                        tension: 0.5
-                    },
-                    // point:{
-                    //   radius: 0
-                    // }
-                },
-                legend: {
-                    display: false
-                },
-                point: {
-                    backgroundColor: 'white'
-                },
-                tooltips: {
-                  enabled: false
+                  },
+                  point: {
+                      backgroundColor: 'white'
+                  },
+                  tooltips: {
+                    enabled: false
+                  }
                 }
-              }
-            });
-            line = [];
+              });
+              line = [];
+            }
           // }
         });
     });
@@ -348,7 +351,7 @@ jQuery(document).ready(function($){
           draggable: false,
           accessibility: false
         });
-        $('.slider-for').slick('slickGoTo', cdat);
+        // $('.slider-for').slick('slickGoTo', cdat);
       }, 2000);
       setTimeout(() => {
         $('body').removeClass('loading');
