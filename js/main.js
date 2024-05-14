@@ -176,15 +176,15 @@ jQuery(document).ready(function($){
                 var s33 = parseFloat(vswell[11].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
 
                 a1 = angleToDirection(s13);
-                ico1 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                ico1 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
                 ts1 = '<p><span>'+s11+'m '+s12+'s</span> <span class="direction">'+a1+'</span>'+ico1+'</p>';
 
                 a2 = angleToDirection(s23);
-                ico2 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                ico2 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
                 ts2 = '<p><span>'+s21+'m '+s22+'s</span> <span class="direction">'+a2+'</span>'+ico2+'</p>';
 
                 a3 = angleToDirection(s33);
-                ico3 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+                ico3 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(s33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
                 ts3 = '<p><span>'+s31+'m '+s32+'s</span> <span class="direction">'+a3+'</span>'+ico3+'</p>';
 
               } else {
@@ -194,15 +194,15 @@ jQuery(document).ready(function($){
               var txt3 = parseFloat(vsurt[0].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]) + '-' + parseFloat(vsurt[1].match(/-?(?:\d+(?:\.\d*)?|\.\d+)/)[0]);
 
               sa1 = angleToDirection(ss13);
-              sico1 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+              sico1 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss13)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
               sts1 = '<p><span>'+ss11+'m '+ss12+'s</span> <span class="direction">'+sa1+'</span>'+sico1+'</p>';
 
               sa2 = angleToDirection(ss23);
-              sico2 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+              sico2 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss23)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
               sts2 = '<p><span>'+ss21+'m '+ss22+'s</span> <span class="direction">'+sa2+'</span>'+sico2+'</p>';
 
               sa3 = angleToDirection(ss33);
-              sico3 = '<span style="transform:rotate(-225deg);margin-left:15px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
+              sico3 = '<span style="transform:rotate(-225deg);margin-left:10px;"><i class="fa-solid fa-location-arrow" style="transform:rotate('+Math.round(ss33)+'deg);font-size: 25px;color:#01cffe;"></i></span>';
               sts3 = '<p><span>'+ss31+'m '+ss32+'s</span> <span class="direction">'+sa3+'</span>'+sico3+'</p>';
 
               if($.inArray(id, [0,1,2,21,22,23]) === -1) {
